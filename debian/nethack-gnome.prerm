@@ -1,0 +1,8 @@
+#!/bin/sh
+
+set -e
+
+update-alternatives --remove nethack /usr/lib/games/nethack/nethack-gnome.sh
+update-alternatives --remove nethack /usr/lib/games/nethack/nethack-gnome-tty.sh
+
+#DEBHELPER#

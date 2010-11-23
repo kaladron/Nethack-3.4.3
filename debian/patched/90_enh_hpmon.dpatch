@@ -1,0 +1,14 @@
+patching file src/botl.c
+Hunk #1 succeeded at 3 with fuzz 1.
+patching file include/config.h
+Hunk #1 succeeded at 340 (offset -5 lines).
+patching file src/options.c
+patching file include/flag.h
+Hunk #1 succeeded at 219 (offset 2 lines).
+patching file dat/opthelp
+patching file doc/Guidebook.txt
+Hunk #1 succeeded at 2398 with fuzz 2 (offset 60 lines).
+patching file doc/Guidebook.mn
+Hunk #1 succeeded at 1863 (offset 63 lines).
+patching file doc/Guidebook.tex
+Hunk #1 succeeded at 2307 (offset 78 lines).

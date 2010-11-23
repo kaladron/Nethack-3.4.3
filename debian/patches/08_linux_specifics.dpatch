@@ -1,0 +1,94 @@
+#! /bin/sh -e
+## 08_linux_specifics.dpatch by Joshua Kwan <joshk@triplehelix.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Debian (and Linux) specifics defined in unixconf.h.
+
+if [ $# -ne 1 ]; then
+    echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
+    exit 1
+fi
+case "$1" in
+    -patch) patch -f --no-backup-if-mismatch -p1 < $0;;
+    -unpatch) patch -f --no-backup-if-mismatch -R -p1 < $0;;
+    *)
+        echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
+        exit 1;;
+esac
+
+exit 0
+
+diff -ur nethack-3.4.3.old/include/unixconf.h nethack-3.4.3/include/unixconf.h
+--- nethack-3.4.3.old/include/unixconf.h	2003-12-08 00:39:13.000000000 +0100
++++ nethack-3.4.3/include/unixconf.h	2005-01-13 17:15:28.000000000 +0100
+@@ -32,12 +32,14 @@
+ 
+ 
+ /* define any of the following that are appropriate */
+-#define SVR4		/* use in addition to SYSV for System V Release 4 */
++/* #define SVR4	*/	/* use in addition to SYSV for System V Release 4 */
+ 			/* including Solaris 2+ */
+ #define NETWORK		/* if running on a networked system */
+ 			/* e.g. Suns sharing a playground through NFS */
+ /* #define SUNOS4 */	/* SunOS 4.x */
+-/* #define LINUX */	/* Another Unix clone */
++#ifdef __linux__
++#define LINUX	/* Another Unix clone */
++#endif
+ /* #define CYGWIN32 */	/* Unix on Win32 -- use with case sensitive defines */
+ /* #define GENIX */	/* Yet Another Unix Clone */
+ /* #define HISX */	/* Bull Unix for XPS Machines */
+@@ -102,7 +104,7 @@
+  * If you want the static parts of your playground on a read-only file
+  * system, define VAR_PLAYGROUND to be where the variable parts are kept.
+  */
+-/* #define VAR_PLAYGROUND "/var/lib/games/nethack" */
++#define VAR_PLAYGROUND "/var/games/nethack"
+ 
+ 
+ /*
+@@ -132,7 +134,7 @@
+  * "extra output" method is used, but not all systems provide access to
+  * a fine-grained timer.
+  */
+-/* #define TIMED_DELAY */	/* usleep() */
++#define TIMED_DELAY	/* usleep() */
+ #endif
+ 
+ /*
+@@ -166,7 +168,7 @@
+ 
+ /* #define NO_MAILREADER */	/* have mail daemon just tell player of mail */
+ 
+-#ifdef	MAIL
++#ifdef MAIL
+ # if defined(BSD) || defined(ULTRIX)
+ #  ifdef AMS
+ #define AMS_MAILBOX	"/Mailbox"
+@@ -189,7 +191,8 @@
+ #   endif
+ #  endif
+ # else
+-#define DEF_MAILREADER	"/bin/mail"
++/* Debian mail reader is /usr/bin/mail, not /bin/mail */
++#define DEF_MAILREADER	"/usr/bin/mail"
+ # endif
+ #endif
+ 
+diff -ur nethack-3.4.3.old/src/mail.c nethack-3.4.3/src/mail.c
+--- nethack-3.4.3.old/src/mail.c	2003-12-08 00:39:13.000000000 +0100
++++ nethack-3.4.3/src/mail.c	2005-01-13 17:14:01.000000000 +0100
+@@ -68,10 +68,11 @@
+ # if !defined(MAILPATH) && defined(AMS)	/* Just a placeholder for AMS */
+ #  define MAILPATH "/dev/null"
+ # endif
+-# if !defined(MAILPATH) && (defined(LINUX) || defined(__osf__))
++# if !defined(MAILPATH) && defined(__osf__)
+ #  define MAILPATH "/var/spool/mail/"
+ # endif
+-# if !defined(MAILPATH) && defined(__FreeBSD__)
++/* Debian uses /var/mail, too. */
++# if !defined(MAILPATH) && (defined(__FreeBSD__) || defined(LINUX) || defined(__GNU__) || defined(__GLIBC__))
+ #  define MAILPATH "/var/mail/"
+ # endif
+ # if !defined(MAILPATH) && (defined(BSD) || defined(ULTRIX))

@@ -1,0 +1,106 @@
+#! /bin/sh -e
+## 16_pixmapdir.dpatch by Joshua Kwan <joshk@triplehelix.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Use /usr/share/pixmaps/nethack/ for pretty pictures.
+
+if [ $# -ne 1 ]; then
+    echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
+    exit 1
+fi
+case "$1" in
+    -patch) patch -f --no-backup-if-mismatch -p1 < $0;;
+    -unpatch) patch -f --no-backup-if-mismatch -R -p1 < $0;;
+    *)
+        echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
+        exit 1;;
+esac
+
+exit 0
+
+--- nethack/win/Qt/qt_win.cpp~	2003-10-22 21:25:09.000000000 -0700
++++ nethack/win/Qt/qt_win.cpp	2003-10-22 21:29:31.000000000 -0700
+@@ -3177,7 +3177,7 @@
+ {
+     if (!pixmap) {
+ 	pixmap=new QPixmap;
+-	tryload(*pixmap, "rip.xpm");
++	tryload(*pixmap, PIXMAPDIR "rip.xpm");
+     }
+     riplines=0;
+     resize(pixmap->width(),pixmap->height());
+@@ -4286,7 +4286,7 @@
+ 	tile_file = iflags.wc_tile_file;
+ 
+     if (!img.load(tile_file)) {
+-	tile_file = "x11tiles";
++	tile_file = PIXMAPDIR "x11tiles";
+ 	if (!img.load(tile_file)) {
+ 	    QString msg;
+ 	    msg.sprintf("Cannot load x11tiles or nhtiles.bmp");
+--- nethack/win/X11/winX.c~	2003-10-22 21:15:53.000000000 -0700
++++ nethack/win/X11/winX.c	2003-10-22 21:16:08.000000000 -0700
+@@ -919,12 +919,12 @@
+     { "message_lines", "Message_lines", XtRInt, sizeof(int),
+       XtOffset(AppResources *,message_lines), XtRString, "12" },
+     { "pet_mark_bitmap", "Pet_mark_bitmap", XtRString, sizeof(String),
+-      XtOffset(AppResources *,pet_mark_bitmap), XtRString, "pet_mark.xbm" },
++      XtOffset(AppResources *,pet_mark_bitmap), XtRString, PIXMAPDIR "pet_mark.xbm" },
+     { "pet_mark_color", "Pet_mark_color", XtRPixel, sizeof(XtRPixel),
+       XtOffset(AppResources *,pet_mark_color), XtRString, "Red" },
+ #ifdef GRAPHIC_TOMBSTONE
+     { "tombstone", "Tombstone", XtRString, sizeof(String),
+-      XtOffset(AppResources *,tombstone), XtRString, "rip.xpm" },
++      XtOffset(AppResources *,tombstone), XtRString, PIXMAPDIR "rip.xpm" },
+     { "tombtext_x", "Tombtext_x", XtRInt, sizeof(int),
+       XtOffset(AppResources *,tombtext_x), XtRString, "155" },
+     { "tombtext_y", "Tombtext_y", XtRInt, sizeof(int),
+--- nethack/win/gnome/gnbind.c~	2003-10-22 21:20:43.000000000 -0700
++++ nethack/win/gnome/gnbind.c	2003-10-22 21:20:49.000000000 -0700
+@@ -7,6 +7,8 @@
+  * code in the Gnome port and the rest of the nethack game engine. 
+ */
+ 
++#include "config.h"
++
+ #include "gnbind.h"
+ #include "gnmain.h"
+ #include "gnaskstr.h"
+@@ -97,7 +97,7 @@
+ 
+ #ifdef HACKDIR
+     //if (ghack_init_glyphs(HACKDIR "/t32-1024.xpm"))
+-    if (ghack_init_glyphs(HACKDIR "/x11tiles"))
++    if (ghack_init_glyphs(PIXMAPDIR "/x11tiles"))
+       g_error ("ERROR:  Could not initialize glyphs.\n");
+ #else
+ #   error HACKDIR is not defined!
+--- nethack/win/gnome/gnopts.c~	2003-10-22 21:21:01.000000000 -0700
++++ nethack/win/gnome/gnopts.c	2003-10-22 21:21:20.000000000 -0700
+@@ -97,13 +97,13 @@
+ 	case 0:
+ 	    /* They selected traditional */
+ 	    ghack_free_glyphs();
+-	    if (ghack_init_glyphs(HACKDIR "/x11tiles"))
++	    if (ghack_init_glyphs(PIXMAPDIR "/x11tiles"))
+ 		      g_error ("ERROR:  Could not initialize glyphs.\n");
+ 	    ghack_reinit_map_window();
+ 	    break;
+ 	case 1:
+ 	    ghack_free_glyphs();
+-	    if (ghack_init_glyphs(HACKDIR "/t32-1024.xpm"))
++	    if (ghack_init_glyphs(PIXMAPDIR "/t32-1024.xpm"))
+ 		      g_error ("ERROR:  Could not initialize glyphs.\n");
+ 	    ghack_reinit_map_window();
+ 
+--- nethack/win/gnome/gnmap.c~	2003-10-22 21:57:08.000000000 -0700
++++ nethack/win/gnome/gnmap.c	2003-10-22 21:57:20.000000000 -0700
+@@ -179,7 +179,7 @@
+ 		    NULL) );
+ 
+   /* Tile the map background with a pretty image */ 
+-  background = gdk_imlib_load_image((char *) "mapbg.xpm");
++  background = gdk_imlib_load_image((char *) PIXMAPDIR "mapbg.xpm");
+   if (background == NULL) {
+       g_warning("Bummer! Failed to load the map background image (mapbg.xpm)!");
+   }

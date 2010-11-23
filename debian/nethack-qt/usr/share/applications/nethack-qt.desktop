@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Qt NetHack
+GenericName=NetHack (Qt interface)
+Comment=
+Icon=nethack
+Exec=/usr/games/nethack-qt
+Terminal=false
+Categories=Application;Game;AdventureGame;

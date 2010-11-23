@@ -1,0 +1,5 @@
+patching file include/winlisp.h
+patching file src/windows.c
+patching file win/tty/termcap.c
+patching file win/lisp/ChangeLog
+patching file win/lisp/winlisp.c

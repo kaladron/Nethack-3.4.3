@@ -1,0 +1,45 @@
+#! /bin/sh -e
+## 18_overridewin.dpatch by Joshua Kwan <joshk@triplehelix.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Better way to do it.
+
+if [ $# -ne 1 ]; then
+    echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
+    exit 1
+fi
+case "$1" in
+    -patch) patch -f --no-backup-if-mismatch -p0 < $0;;
+    -unpatch) patch -f --no-backup-if-mismatch -R -p0 < $0;;
+    *)
+        echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
+        exit 1;;
+esac
+
+exit 0
+
+Index: src/windows.c
+===================================================================
+RCS file: /cvsroot/pkg-nethack/nethack/src/windows.c,v
+retrieving revision 1.1.1.1
+diff -u -u -r1.1.1.1 windows.c
+--- src/windows.c	7 Oct 2003 19:00:21 -0000	1.1.1.1
++++ src/windows.c	9 Dec 2003 18:20:08 -0000
+@@ -96,10 +103,16 @@
+ choose_windows(s)
+ const char *s;
+ {
++    char *ow; const char *wt;
+     register int i;
++    
++    if (!strcmp(s, DEFAULT_WINDOW_SYS) && (ow = getenv("OVERRIDEWIN")))
++      wt = ow;
++    else
++      wt = s;
+ 
+     for(i=0; winchoices[i].procs; i++)
+-	if (!strcmpi(s, winchoices[i].procs->name)) {
++	if (!strcmpi(wt, winchoices[i].procs->name)) {
+ 	    windowprocs = *winchoices[i].procs;
+ 	    if (winchoices[i].ini_routine) (*winchoices[i].ini_routine)();
+ 	    return;

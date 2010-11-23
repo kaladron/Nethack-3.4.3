@@ -1,0 +1,27 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 21_gnome_umask.dpatch by Joshua Kwan <joshk@triplehelix.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: No description.
+
+@DPATCH@
+--- nethack-3.4.3/win/gnome/gnmain.c~	2006-11-08 15:41:29.000000000 -0800
++++ nethack-3.4.3/win/gnome/gnmain.c	2006-11-08 15:41:31.000000000 -0800
+@@ -710,6 +710,7 @@
+     int i;
+     struct timeval tv;
+     uid_t uid, euid;
++    mode_t oldumask;
+ 
+     /* It seems that the authors of gnome_score_init() drop group
+      * priveledges.  We need group priveledges, so until we change the
+@@ -728,7 +729,9 @@
+       setuid(uid);
+     hide_privileges(TRUE);
+     /* XXX gnome_init must print nethack options for --help, but does not */
++    oldumask = umask(022); /* god, gnome 1.2 is retaded */
+     gnome_init ("nethack", VERSION_STRING, argc, argv);
++    umask(oldumask);
+     hide_privileges(FALSE);
+     parse_args (argc, argv);
+ 

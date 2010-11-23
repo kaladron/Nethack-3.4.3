@@ -1,0 +1,11 @@
+patching file dat/opthelp
+patching file doc/Guidebook.mn
+Hunk #1 succeeded at 2031 (offset 67 lines).
+patching file doc/Guidebook.tex
+Hunk #1 succeeded at 2491 (offset 82 lines).
+patching file doc/Guidebook.txt
+Hunk #1 succeeded at 2612 with fuzz 2 (offset 58 lines).
+patching file include/flag.h
+Hunk #1 succeeded at 222 (offset 5 lines).
+patching file src/options.c
+patching file src/uhitm.c

@@ -1,0 +1,8 @@
+8d3c25a4d892fcf28405a7ac4b74395d  usr/lib/games/nethack/nethack-console
+c7f74777a758b1b8d6a9c9fc72cd530a  usr/lib/games/nethack/nethack-console.sh
+9f5855a137b27956807712528887d317  usr/share/doc/nethack-console/README.Debian.gz
+b07190bd0a137e4db044a23980e6dd4a  usr/share/doc/nethack-console/copyright
+e45bdabe427449d20b33c1be2efceeb8  usr/share/doc/nethack-console/README.menucolor
+399ac66f662deff79c68b4fb71897078  usr/share/doc/nethack-console/changelog.Debian.gz
+4bb1f53507921bd711b4562431813821  usr/share/menu/nethack-console
+1e7551568957c92b5ea7d9c898998637  usr/share/lintian/overrides/nethack-console

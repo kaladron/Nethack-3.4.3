@@ -1,0 +1,134 @@
+# Translation of nethack_3.4.3-8_templates.po to Dutch
+# This file is distributed under the same license as the nethack package.
+# Please see debian/copyright.
+#
+# Translators, if you are not familiar with the PO format, gettext
+# documentation is worth reading, especially sections dedicated to
+# this format, e.g. by running:
+# info -n '(gettext)PO Files'
+# info -n '(gettext)Header Entry'
+# Some information specific to po-debconf are available at
+# /usr/share/doc/po-debconf/README-trans
+# or http://www.debian.org/intl/l10n/po-debconf/README-trans
+# Developers do not need to manually edit POT or PO files.
+# Kurt De Bree <kdebree(AT)telenet(DOT)be>, 2006
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: nethack_3.4.3-8_templates\n"
+"Report-Msgid-Bugs-To: nethack@packages.debian.org\n"
+"POT-Creation-Date: 2009-03-17 07:46+0100\n"
+"PO-Revision-Date: 2006-04-23 17:53+0100\n"
+"Last-Translator: Kurt De Bree <kdebree(AT)telenet(DOT)be>\n"
+"Language-Team: Dutch <debian-l10n-dutch@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.1\n"
+
+#. Type: boolean
+#. Description
+#: ../nethack-common.templates:2001
+msgid "Use setgid bit with NetHack's recover utility?"
+msgstr ""
+
+#. Type: boolean
+#. Description
+#: ../nethack-common.templates:2001
+msgid ""
+"The \"recover\" program in the package nethack-common is traditionally "
+"installed with the \"setgid\" bit set, so that all users can use it to "
+"recover their own save files after a crash (with \"games\" group "
+"privileges). This is a potential source of security problems."
+msgstr ""
+
+#. Type: boolean
+#. Description
+#: ../nethack-common.templates:2001
+msgid ""
+"This package includes a script that runs during system boot, invoking "
+"recover on any broken save files it finds. This makes it less likely that "
+"users will need to run it themselves, so the default is to install recover "
+"without the special permission bits required for that."
+msgstr ""
+
+#. Type: boolean
+#. Description
+#: ../nethack-common.templates:2001
+msgid ""
+"If you choose this option, unprivileged users will be able to run \"recover"
+"\"."
+msgstr ""
+
+#~ msgid "abort, backup, purge, ignore"
+#~ msgstr "afbreken, reservekopie maken, wissen (purge), negeren"
+
+#~ msgid "Should NetHack back up your old, incompatible save files?"
+#~ msgstr ""
+#~ "Moet NetHack een reservekopie van uw oude, incompatibele spelbestanden "
+#~ "maken?"
+
+#~ msgid ""
+#~ "You are upgrading from a version of NetHack whose save files are not "
+#~ "compatible with the version you are upgrading to. You may either have "
+#~ "them backed up into /tmp, purge them, ignore this problem completely, or "
+#~ "abort this installation and manually handle NetHack's save files. Your "
+#~ "score files will be lost if you choose to purge."
+#~ msgstr ""
+#~ "De nieuwe versie van NetHack gebruikt spelbestanden die niet compatibel "
+#~ "zijn met de NetHack-versie waarnaar u wilt opwaarderen.  U kunt van deze "
+#~ "spelbestanden een reservekopie maken onder /tmp, ze wissen (purge), het "
+#~ "probleem volledig negeren, of het installatieproces afbreken en handmatig "
+#~ "de spelbestanden behandelen. Uw scorebestanden zullen verloren gaan "
+#~ "indien u 'wissen' (purge) kiest."
+
+#~ msgid ""
+#~ "If you choose to back up, the files will be backed up into a gzip-"
+#~ "compressed tar archive in /tmp with a random name starting with 'nethk' "
+#~ "and ending in '.tar.gz'."
+#~ msgstr ""
+#~ "Indien u resevekopiëen wenst te maken, worden deze bewaard onder /tmp als "
+#~ "een, met gzip gecomprimeerd, tar-archief, met een willekeurig gekozen "
+#~ "naam beginnend met 'nethk' en eindigend met '.tar.gz'."
+
+#~ msgid ""
+#~ "Old NetHack save files can be found in /var/games/nethack (or /var/lib/"
+#~ "games/nethack, for versions before 3.4.0)."
+#~ msgstr ""
+#~ "De oude NetHack spelbestanden kunnen gevonden worden in /var/games/"
+#~ "nethack (of /var/lib/games/nethack, voor versies ouder dan 3.4.0)."
+
+#~ msgid "Would you like NetHack's recover utility to be setgid games?"
+#~ msgstr ""
+#~ "Wilt u NetHack's 'recover'-programma standaard laten uitvoeren door de "
+#~ "'games'-groep?"
+
+#~ msgid ""
+#~ "The 'recover' program is installed as part of the nethack-common package "
+#~ "and exists to help the administrator recover broken save files, etc."
+#~ msgstr ""
+#~ "Het 'recover'-programma is als deel van het nethack-common pakket "
+#~ "geïnstalleerd en dient om de beheerder te helpen om corrupte "
+#~ "spelbestanden te herstellen, enz."
+
+#~ msgid ""
+#~ "Recover is traditionally installed setgid games, although it does not "
+#~ "need to be in the Debian NetHack installation, as it is automatically run "
+#~ "at boot time as root. Its only usefulness as a setgid binary is to let "
+#~ "players as normal users on the system recover their save files, should "
+#~ "NetHack crash or their connection drop mid-game."
+#~ msgstr ""
+#~ "Recover wordt traditioneel geïnstalleerd om door de 'games'-groep te "
+#~ "laten uitvoeren, hoewel het niet nodig is voor NetHack in de Debian "
+#~ "installatie, omdat het automatisch tijdens de systeemopstart met "
+#~ "rootrechten opgestart wordt. Het is er alleen om de spelers met beperkte "
+#~ "rechten hun spelbestanden te laten herstellen als NetHack plotseling "
+#~ "crashed of hun verbinding tijdens het spel uitvalt."
+
+#~ msgid ""
+#~ "If you answer no, you will have to run recover as root or as someone in "
+#~ "group games to recover save files after a crash or a connection drop."
+#~ msgstr ""
+#~ "Indien u 'nee' antwoordt, moet u recover uitvoeren als root of als iemand "
+#~ "in de groep 'games' om de spelbestanden te herstellen na het uitvallen "
+#~ "van de verbinding of na een crash."

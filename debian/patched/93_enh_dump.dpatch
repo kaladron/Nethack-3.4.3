@@ -1,0 +1,29 @@
+patching file dat/opthelp
+Hunk #1 succeeded at 101 (offset 9 lines).
+patching file doc/Guidebook.mn
+patching file doc/Guidebook.tex
+patching file doc/Guidebook.txt
+patching file include/decl.h
+patching file include/extern.h
+Hunk #6 succeeded at 2258 (offset 3 lines).
+patching file src/botl.c
+Hunk #1 succeeded at 166 (offset 1 line).
+Hunk #2 succeeded at 222 (offset 1 line).
+Hunk #3 succeeded at 258 with fuzz 1 (offset 1 line).
+Hunk #4 succeeded at 360 (offset 46 lines).
+patching file src/cmd.c
+patching file src/decl.c
+patching file src/display.c
+patching file src/end.c
+patching file src/invent.c
+patching file src/options.c
+Hunk #1 succeeded at 239 (offset 15 lines).
+Hunk #2 succeeded at 1215 (offset 130 lines).
+Hunk #3 succeeded at 3096 (offset 142 lines).
+patching file src/spell.c
+patching file src/topten.c
+patching file src/weapon.c
+patching file win/tty/wintty.c
+Hunk #1 succeeded at 166 (offset 4 lines).
+Hunk #2 succeeded at 1765 (offset 43 lines).
+patching file include/config.h

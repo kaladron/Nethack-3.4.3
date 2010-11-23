@@ -1,0 +1,20 @@
+patching file include/decl.h
+patching file include/flag.h
+patching file include/unixconf.h
+Hunk #1 succeeded at 196 (offset 3 lines).
+patching file src/mail.c
+Hunk #3 succeeded at 469 (offset 1 line).
+Hunk #4 succeeded at 510 (offset 1 line).
+Hunk #5 succeeded at 580 (offset 1 line).
+Hunk #6 succeeded at 661 (offset 1 line).
+patching file sys/unix/unixmain.c
+patching file include/decl.h
+patching file include/flag.h
+patching file include/unixconf.h
+Hunk #1 succeeded at 196 (offset 3 lines).
+patching file src/mail.c
+Hunk #3 succeeded at 469 (offset 1 line).
+Hunk #4 succeeded at 510 (offset 1 line).
+Hunk #5 succeeded at 580 (offset 1 line).
+Hunk #6 succeeded at 661 (offset 1 line).
+patching file sys/unix/unixmain.c

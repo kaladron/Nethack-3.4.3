@@ -1,0 +1,35 @@
+#! /bin/sh -e
+## 10_gnome_add_quiver.dpatch by Joshua Kwan <joshk@triplehelix.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Add a 'Quiver/Ready' option to the GNOME UI menu.
+
+if [ $# -ne 1 ]; then
+    echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
+    exit 1
+fi
+case "$1" in
+    -patch) patch -f --no-backup-if-mismatch -p1 < $0;;
+    -unpatch) patch -f --no-backup-if-mismatch -R -p1 < $0;;
+    *)
+        echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
+        exit 1;;
+esac
+
+exit 0
+
+--- a/win/gnome/gnmain.c~	2003-10-06 23:39:19.000000000 -0700
++++ b/win/gnome/gnmain.c	2003-10-06 23:38:39.000000000 -0700
+@@ -361,6 +361,12 @@
+ 	       ghack_accelerator_selected, 
+ 	       GINT_TO_POINTER('t'), NULL, GNOME_APP_PIXMAP_NONE, NULL, 't',0
+ 	   },
++           {
++               GNOME_APP_UI_ITEM, N_("Quiver/Ready"),
++               N_("ready or quiver some ammunition"),
++               ghack_accelerator_selected,
++               GINT_TO_POINTER('Q'), NULL, GNOME_APP_PIXMAP_NONE, NULL, 'Q',0
++           },
+ 	   { 
+ 	       GNOME_APP_UI_ITEM, N_("Open Door"), 
+ 	       N_("open a door"),

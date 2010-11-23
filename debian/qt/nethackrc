@@ -1,0 +1,33 @@
+#
+# System-wide NetHack configuration file for Qt-based NetHack.
+#
+
+OPTIONS=windowtype:Qt,toptenwin,hilite_pet,tiled_map,!ascii_map
+OPTIONS=fixinv,safe_pet,sortpack,tombstone,color,!number_pad
+OPTIONS=verbose,news,fruit:potato
+OPTIONS=dogname:Slinky
+OPTIONS=catname:Rex
+OPTIONS=pickup_types:$
+OPTIONS=nomail
+OPTIONS=menustyle:partial,!time,showexp
+OPTIONS=msghistory:200
+
+# Enable this if you want to see your inventory sorted in alphabetical
+# order by item instead of by index letter:
+# OPTIONS=sortloot:full
+# or if you just want containers sorted:
+# OPTIONS=sortloot:loot
+
+# Optional Qt-specific options.
+
+# QT_TILEWIDTH=20
+# QT_TILEHEIGHT=24
+
+# These are the possible settings for QT_FONTSIZE:
+# t -> tiny
+# s -> small
+# m -> medium
+# l -> large
+# h -> huge
+
+# QT_FONTSIZE=m

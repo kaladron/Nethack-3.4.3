@@ -1,0 +1,40 @@
+Package: nethack-common
+Source: nethack
+Version: 3.4.3-12ubuntu1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 1492
+Depends: libc6 (>= 2.7), debconf (>= 0.5) | debconf-2.0, debianutils (>= 1.12)
+Recommends: nethack-console | nethack-x11 | nethack-qt
+Conflicts: nethack-console (<< 3.4.3-12ubuntu1), nethack-gnome (<< 3.4.3-12ubuntu1), nethack-lisp (<< 3.4.3-12ubuntu1), nethack-qt (<< 3.4.3-12ubuntu1), nethack-x11 (<< 3.4.3-12ubuntu1), suidmanager (<< 0.50)
+Replaces: nethack (<< 3.4.0)
+Section: games
+Priority: optional
+Description: dungeon crawl game - common files
+ NetHack is a wonderfully silly, yet quite addictive, Dungeons &
+ Dragons-style adventure game. You play a character from one of many
+ classes (such as wizard, ranger, or tourist), fighting your way down to
+ retrieve the Amulet of Yendor (try saying THAT one backwards!) for your
+ god. On the way, you might encounter a quantum mechanic or two, or
+ perhaps King Arthur, or - if you're REALLY lucky - the Ravenous
+ Bugblatter Beast of Traal.
+ .
+ You should install a front-end for NetHack if you
+ wish to play the game.  Each of them includes the
+ original non-graphical version, and they can all be installed
+ at the same time:
+  - nethack-console: no graphics, just plain NetHack;
+  - nethack-x11    : original X11/Athena-based graphical version;
+  - nethack-qt     : Qt-based graphical version;
+  - nethack-lisp   : Lisp window version.
+ .
+ The various graphical front-ends for NetHack all share a large
+ number of files in common.  This package contains the graphics,
+ dungeon levels, and utilities common to all NetHack front-ends.
+ .
+ It also provides a few utilities such as recover, for retrieving
+ auto-save files in case of a power failure, and dgn_comp and
+ lev_comp, two utilities for making your own NetHack levels and
+ dungeons. The "recover" utility will be run every time the system
+ boots, if there are any auto-save files available.
+Original-Maintainer: Joshua Kwan <joshk@triplehelix.org>

@@ -1,0 +1,111 @@
+README for Debian GNU/Linux Nethack 3.4.3
+-----------------------------------------
+
+[ Apologies for Save File Format Change ]
+
+The save-game format has changed again for Nethack 3.4.0.  You
+should have been prompted by the installer to back up your old
+save game files and high score list into /tmp.  Unfortunately,
+your old save-games are no longer useful with Nethack 3.4.0,
+although it may be possible to merge the old high score lists.
+
+Note that the save-game and bones format are the same between
+3.4.0 and 3.4.1.  You do not need to clean out your save games
+for this upgrade.
+
+[ New in Nethack for Debian 3.4.1-1 and Later ]
+
+Back by popular demand is the no-frills nethack-console package.
+This package has NO graphical interface, and does not even depend
+on xbase-clients.
+
+The nethack-console package supports either ~/.nethackrc or
+~/.nethackrc.console files for configuration.
+
+[ New in Nethack for Debian 3.4.0-1 and Later ]
+
+The Debian Nethack packages have been restructured.  Now,
+separate packages are provided for each graphical interface:
+
+ * nethack-x11
+ * nethack-gnome
+ * nethack-qt
+
+Each of these packages also contains the classic text-based
+interface.  You can get the classic interface by running
+/usr/games/nethack, or a graphical interface by running:
+
+(for x11): /usr/games/xnethack
+(for gnome): /usr/games/nethack-gnome
+(for qt): /usr/games/nethack-qt
+
+[ Changing the default graphical interface ]
+
+The /usr/games/nethack symlink is maintained with update-alternatives,
+so if you wish to make one of the graphical interfaces the default,
+simply run (as root):
+
+# update-alternatives --config nethack
+
+The common dungeon files and utilities have been moved out
+into a separate package, nethack-common.
+
+The old nethack package is now a dummy package that just depends
+on nethack-common and nethack-x11 to behave how the old version
+did.
+
+Please note that the Gnome interface is not yet fully stable,
+and is known to have some bugs.  If you value your character, please
+use the x11, qt, or text interfaces.
+
+[ Configuration Files for 3.4.0-1 and Later ]
+
+The previous Debian releases of Nethack did not provide for
+separate configuration files for each windowing system. (If
+you ran xnethack, ~/.nethackrc was ignored.)  Now, each windowing
+system has its own set of system defaults and per-user defaults:
+
+x11: ~/.nethackrc.x11 or /etc/nethack/nethackrc.x11
+gnome: ~/.nethackrc.gnome or /etc/nethack/nethackrc.gnome 
+qt: ~/.nethackrc.qt or /etc/nethack/nethackrc.qt
+
+text: ~/.nethackrc or /etc/nethack/nethackrc.tty
+
+If the HACKOPTIONS environment variable is set to a filename,
+that configuration file is always used.  Otherwise, the per-user
+config file is tried for the appropriate windowing system
+(~/.nethackrc.gnome for gnome, etc).  If that is not found,
+the system-wide default in /etc/nethack is used.
+
+[ Game Dumps ]
+
+Summaries of the immediately previous game that someone has played will
+always be saved upon death, escape, or ascension in /var/games/nethack/dumps.
+These are ideal for posting to newsgroups and bragging to your friends.
+
+The configuration file hardcodes the path for 'dumpfile' (the location where
+this log will be saved) and it cannot be changed, so there is no chance of
+being able to create files in arbitrary places with gid: games.
+
+[ Description of Nethack ]
+
+Nethack is a wonderfully silly yet quite addicting Dungeons and
+Dragons-style adventure game. You play the part of a fierce fighter,
+wizard, or any of many other classes, fighting your way down to
+retrieve the Amulet of Yendor (try saying THAT one backwards!) for
+your god. On the way, you might encounter a quantum mechanic or two,
+or perhaps a microscopic space fleet, or -- if you're REALLY lucky --
+the Ravenous Bugblatter Beast of Traal.
+
+There is a nethack-spoilers package available separately if you are
+really stuck, to be used only as a last resort.
+
+A few utilities -- recover, for retrieving your auto-save files in case
+of a power failure, and dgn_comp and lev_comp, two utilities for making
+your own Nethack levels and dungeons, have been included in
+/usr/lib/games/nethack.  As of Nethack 3.4.0, the dlb utility is
+included for master hackers.
+
+The recover utility will be run upon bootup by /etc/init.d/nethack-common.
+Any auto-save files still on the system from a possible crash will be
+retrieved and converted into proper save files.

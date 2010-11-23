@@ -1,0 +1,8 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 22_qt_savegame.dpatch by Sven Jonsson <sven.jonsson@ebox.tninet.se>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Search in the correct location for nethack-qt savegames
+## DP: This is filed as upstream bug Q343-2.
+
+

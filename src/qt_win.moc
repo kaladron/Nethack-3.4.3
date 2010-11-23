@@ -1,0 +1,1076 @@
+/****************************************************************************
+** NetHackQtSettings meta object code from reading C++ file 'qt_win.h'
+**
+** Created: Tue Sep 7 02:58:32 2010
+**      by: The Qt MOC ($Id: qt/moc_yacc.cpp   3.3.8   edited Feb 2 14:59 $)
+**
+** WARNING! All changes made in this file will be lost!
+*****************************************************************************/
+
+#undef QT_NO_COMPAT
+#include "../include/qt_win.h"
+#include <qmetaobject.h>
+#include <qapplication.h>
+
+#include <private/qucomextra_p.h>
+#if !defined(Q_MOC_OUTPUT_REVISION) || (Q_MOC_OUTPUT_REVISION != 26)
+#error "This file was generated using the moc from 3.3.8b. It"
+#error "cannot be used with the include files from this version of Qt."
+#error "(The moc has changed too much.)"
+#endif
+
+const char *NetHackQtSettings::className() const
+{
+    return "NetHackQtSettings";
+}
+
+QMetaObject *NetHackQtSettings::metaObj = 0;
+static QMetaObjectCleanUp cleanUp_NetHackQtSettings( "NetHackQtSettings", &NetHackQtSettings::staticMetaObject );
+
+#ifndef QT_NO_TRANSLATION
+QString NetHackQtSettings::tr( const char *s, const char *c )
+{
+    if ( qApp )
+	return qApp->translate( "NetHackQtSettings", s, c, QApplication::DefaultCodec );
+    else
+	return QString::fromLatin1( s );
+}
+#ifndef QT_NO_TRANSLATION_UTF8
+QString NetHackQtSettings::trUtf8( const char *s, const char *c )
+{
+    if ( qApp )
+	return qApp->translate( "NetHackQtSettings", s, c, QApplication::UnicodeUTF8 );
+    else
+	return QString::fromUtf8( s );
+}
+#endif // QT_NO_TRANSLATION_UTF8
+
+#endif // QT_NO_TRANSLATION
+
+QMetaObject* NetHackQtSettings::staticMetaObject()
+{
+    if ( metaObj )
+	return metaObj;
+    QMetaObject* parentObject = QDialog::staticMetaObject();
+    static const QUMethod slot_0 = {"toggleGlyphSize", 0, 0 };
+    static const QUParameter param_slot_1[] = {
+	{ 0, &static_QUType_bool, 0, QUParameter::In }
+    };
+    static const QUMethod slot_1 = {"setGlyphSize", 1, param_slot_1 };
+    static const QUMethod slot_2 = {"resizeTiles", 0, 0 };
+    static const QMetaData slot_tbl[] = {
+	{ "toggleGlyphSize()", &slot_0, QMetaData::Public },
+	{ "setGlyphSize(bool)", &slot_1, QMetaData::Public },
+	{ "resizeTiles()", &slot_2, QMetaData::Private }
+    };
+    static const QUMethod signal_0 = {"fontChanged", 0, 0 };
+    static const QUMethod signal_1 = {"tilesChanged", 0, 0 };
+    static const QMetaData signal_tbl[] = {
+	{ "fontChanged()", &signal_0, QMetaData::Public },
+	{ "tilesChanged()", &signal_1, QMetaData::Public }
+    };
+    metaObj = QMetaObject::new_metaobject(
+	"NetHackQtSettings", parentObject,
+	slot_tbl, 3,
+	signal_tbl, 2,
+#ifndef QT_NO_PROPERTIES
+	0, 0,
+	0, 0,
+#endif // QT_NO_PROPERTIES
+	0, 0 );
+    cleanUp_NetHackQtSettings.setMetaObject( metaObj );
+    return metaObj;
+}
+
+void* NetHackQtSettings::qt_cast( const char* clname )
+{
+    if ( !qstrcmp( clname, "NetHackQtSettings" ) )
+	return this;
+    return QDialog::qt_cast( clname );
+}
+
+// SIGNAL fontChanged
+void NetHackQtSettings::fontChanged()
+{
+    activate_signal( staticMetaObject()->signalOffset() + 0 );
+}
+
+// SIGNAL tilesChanged
+void NetHackQtSettings::tilesChanged()
+{
+    activate_signal( staticMetaObject()->signalOffset() + 1 );
+}
+
+bool NetHackQtSettings::qt_invoke( int _id, QUObject* _o )
+{
+    switch ( _id - staticMetaObject()->slotOffset() ) {
+    case 0: toggleGlyphSize(); break;
+    case 1: setGlyphSize((bool)static_QUType_bool.get(_o+1)); break;
+    case 2: resizeTiles(); break;
+    default:
+	return QDialog::qt_invoke( _id, _o );
+    }
+    return TRUE;
+}
+
+bool NetHackQtSettings::qt_emit( int _id, QUObject* _o )
+{
+    switch ( _id - staticMetaObject()->signalOffset() ) {
+    case 0: fontChanged(); break;
+    case 1: tilesChanged(); break;
+    default:
+	return QDialog::qt_emit(_id,_o);
+    }
+    return TRUE;
+}
+#ifndef QT_NO_PROPERTIES
+
+bool NetHackQtSettings::qt_property( int id, int f, QVariant* v)
+{
+    return QDialog::qt_property( id, f, v);
+}
+
+bool NetHackQtSettings::qt_static_property( QObject* , int , int , QVariant* ){ return FALSE; }
+#endif // QT_NO_PROPERTIES
+
+
+const char *NetHackQtPlayerSelector::className() const
+{
+    return "NetHackQtPlayerSelector";
+}
+
+QMetaObject *NetHackQtPlayerSelector::metaObj = 0;
+static QMetaObjectCleanUp cleanUp_NetHackQtPlayerSelector( "NetHackQtPlayerSelector", &NetHackQtPlayerSelector::staticMetaObject );
+
+#ifndef QT_NO_TRANSLATION
+QString NetHackQtPlayerSelector::tr( const char *s, const char *c )
+{
+    if ( qApp )
+	return qApp->translate( "NetHackQtPlayerSelector", s, c, QApplication::DefaultCodec );
+    else
+	return QString::fromLatin1( s );
+}
+#ifndef QT_NO_TRANSLATION_UTF8
+QString NetHackQtPlayerSelector::trUtf8( const char *s, const char *c )
+{
+    if ( qApp )
+	return qApp->translate( "NetHackQtPlayerSelector", s, c, QApplication::UnicodeUTF8 );
+    else
+	return QString::fromUtf8( s );
+}
+#endif // QT_NO_TRANSLATION_UTF8
+
+#endif // QT_NO_TRANSLATION
+
+QMetaObject* NetHackQtPlayerSelector::staticMetaObject()
+{
+    if ( metaObj )
+	return metaObj;
+    QMetaObject* parentObject = QDialog::staticMetaObject();
+    static const QUMethod slot_0 = {"Quit", 0, 0 };
+    static const QUMethod slot_1 = {"Random", 0, 0 };
+    static const QUParameter param_slot_2[] = {
+	{ "n", &static_QUType_QString, 0, QUParameter::In }
+    };
+    static const QUMethod slot_2 = {"selectName", 1, param_slot_2 };
+    static const QUMethod slot_3 = {"selectRole", 0, 0 };
+    static const QUMethod slot_4 = {"selectRace", 0, 0 };
+    static const QUMethod slot_5 = {"setupOthers", 0, 0 };
+    static const QUParameter param_slot_6[] = {
+	{ 0, &static_QUType_int, 0, QUParameter::In }
+    };
+    static const QUMethod slot_6 = {"selectGender", 1, param_slot_6 };
+    static const QUParameter param_slot_7[] = {
+	{ 0, &static_QUType_int, 0, QUParameter::In }
+    };
+    static const QUMethod slot_7 = {"selectAlignment", 1, param_slot_7 };
+    static const QMetaData slot_tbl[] = {
+	{ "Quit()", &slot_0, QMetaData::Public },
+	{ "Random()", &slot_1, QMetaData::Public },
+	{ "selectName(const QString&)", &slot_2, QMetaData::Public },
+	{ "selectRole()", &slot_3, QMetaData::Public },
+	{ "selectRace()", &slot_4, QMetaData::Public },
+	{ "setupOthers()", &slot_5, QMetaData::Public },
+	{ "selectGender(int)", &slot_6, QMetaData::Public },
+	{ "selectAlignment(int)", &slot_7, QMetaData::Public }
+    };
+    metaObj = QMetaObject::new_metaobject(
+	"NetHackQtPlayerSelector", parentObject,
+	slot_tbl, 8,
+	0, 0,
+#ifndef QT_NO_PROPERTIES
+	0, 0,
+	0, 0,
+#endif // QT_NO_PROPERTIES
+	0, 0 );
+    cleanUp_NetHackQtPlayerSelector.setMetaObject( metaObj );
+    return metaObj;
+}
+
+void* NetHackQtPlayerSelector::qt_cast( const char* clname )
+{
+    if ( !qstrcmp( clname, "NetHackQtPlayerSelector" ) )
+	return this;
+    return QDialog::qt_cast( clname );
+}
+
+bool NetHackQtPlayerSelector::qt_invoke( int _id, QUObject* _o )
+{
+    switch ( _id - staticMetaObject()->slotOffset() ) {
+    case 0: Quit(); break;
+    case 1: Random(); break;
+    case 2: selectName((const QString&)static_QUType_QString.get(_o+1)); break;
+    case 3: selectRole(); break;
+    case 4: selectRace(); break;
+    case 5: setupOthers(); break;
+    case 6: selectGender((int)static_QUType_int.get(_o+1)); break;
+    case 7: selectAlignment((int)static_QUType_int.get(_o+1)); break;
+    default:
+	return QDialog::qt_invoke( _id, _o );
+    }
+    return TRUE;
+}
+
+bool NetHackQtPlayerSelector::qt_emit( int _id, QUObject* _o )
+{
+    return QDialog::qt_emit(_id,_o);
+}
+#ifndef QT_NO_PROPERTIES
+
+bool NetHackQtPlayerSelector::qt_property( int id, int f, QVariant* v)
+{
+    return QDialog::qt_property( id, f, v);
+}
+
+bool NetHackQtPlayerSelector::qt_static_property( QObject* , int , int , QVariant* ){ return FALSE; }
+#endif // QT_NO_PROPERTIES
+
+
+const char *NetHackQtExtCmdRequestor::className() const
+{
+    return "NetHackQtExtCmdRequestor";
+}
+
+QMetaObject *NetHackQtExtCmdRequestor::metaObj = 0;
+static QMetaObjectCleanUp cleanUp_NetHackQtExtCmdRequestor( "NetHackQtExtCmdRequestor", &NetHackQtExtCmdRequestor::staticMetaObject );
+
+#ifndef QT_NO_TRANSLATION
+QString NetHackQtExtCmdRequestor::tr( const char *s, const char *c )
+{
+    if ( qApp )
+	return qApp->translate( "NetHackQtExtCmdRequestor", s, c, QApplication::DefaultCodec );
+    else
+	return QString::fromLatin1( s );
+}
+#ifndef QT_NO_TRANSLATION_UTF8
+QString NetHackQtExtCmdRequestor::trUtf8( const char *s, const char *c )
+{
+    if ( qApp )
+	return qApp->translate( "NetHackQtExtCmdRequestor", s, c, QApplication::UnicodeUTF8 );
+    else
+	return QString::fromUtf8( s );
+}
+#endif // QT_NO_TRANSLATION_UTF8
+
+#endif // QT_NO_TRANSLATION
+
+QMetaObject* NetHackQtExtCmdRequestor::staticMetaObject()
+{
+    if ( metaObj )
+	return metaObj;
+    QMetaObject* parentObject = QDialog::staticMetaObject();
+    static const QUMethod slot_0 = {"cancel", 0, 0 };
+    static const QUParameter param_slot_1[] = {
+	{ "i", &static_QUType_int, 0, QUParameter::In }
+    };
+    static const QUMethod slot_1 = {"done", 1, param_slot_1 };
+    static const QMetaData slot_tbl[] = {
+	{ "cancel()", &slot_0, QMetaData::Private },
+	{ "done(int)", &slot_1, QMetaData::Private }
+    };
+    metaObj = QMetaObject::new_metaobject(
+	"NetHackQtExtCmdRequestor", parentObject,
+	slot_tbl, 2,
+	0, 0,
+#ifndef QT_NO_PROPERTIES
+	0, 0,
+	0, 0,
+#endif // QT_NO_PROPERTIES
+	0, 0 );
+    cleanUp_NetHackQtExtCmdRequestor.setMetaObject( metaObj );
+    return metaObj;
+}
+
+void* NetHackQtExtCmdRequestor::qt_cast( const char* clname )
+{
+    if ( !qstrcmp( clname, "NetHackQtExtCmdRequestor" ) )
+	return this;
+    return QDialog::qt_cast( clname );
+}
+
+bool NetHackQtExtCmdRequestor::qt_invoke( int _id, QUObject* _o )
+{
+    switch ( _id - staticMetaObject()->slotOffset() ) {
+    case 0: cancel(); break;
+    case 1: done((int)static_QUType_int.get(_o+1)); break;
+    default:
+	return QDialog::qt_invoke( _id, _o );
+    }
+    return TRUE;
+}
+
+bool NetHackQtExtCmdRequestor::qt_emit( int _id, QUObject* _o )
+{
+    return QDialog::qt_emit(_id,_o);
+}
+#ifndef QT_NO_PROPERTIES
+
+bool NetHackQtExtCmdRequestor::qt_property( int id, int f, QVariant* v)
+{
+    return QDialog::qt_property( id, f, v);
+}
+
+bool NetHackQtExtCmdRequestor::qt_static_property( QObject* , int , int , QVariant* ){ return FALSE; }
+#endif // QT_NO_PROPERTIES
+
+
+const char *NetHackQtMapWindow::className() const
+{
+    return "NetHackQtMapWindow";
+}
+
+QMetaObject *NetHackQtMapWindow::metaObj = 0;
+static QMetaObjectCleanUp cleanUp_NetHackQtMapWindow( "NetHackQtMapWindow", &NetHackQtMapWindow::staticMetaObject );
+
+#ifndef QT_NO_TRANSLATION
+QString NetHackQtMapWindow::tr( const char *s, const char *c )
+{
+    if ( qApp )
+	return qApp->translate( "NetHackQtMapWindow", s, c, QApplication::DefaultCodec );
+    else
+	return QString::fromLatin1( s );
+}
+#ifndef QT_NO_TRANSLATION_UTF8
+QString NetHackQtMapWindow::trUtf8( const char *s, const char *c )
+{
+    if ( qApp )
+	return qApp->translate( "NetHackQtMapWindow", s, c, QApplication::UnicodeUTF8 );
+    else
+	return QString::fromUtf8( s );
+}
+#endif // QT_NO_TRANSLATION_UTF8
+
+#endif // QT_NO_TRANSLATION
+
+QMetaObject* NetHackQtMapWindow::staticMetaObject()
+{
+    if ( metaObj )
+	return metaObj;
+    QMetaObject* parentObject = QWidget::staticMetaObject();
+    static const QUMethod slot_0 = {"updateTiles", 0, 0 };
+    static const QUParameter param_slot_1[] = {
+	{ "x", &static_QUType_int, 0, QUParameter::In },
+	{ "y", &static_QUType_int, 0, QUParameter::In }
+    };
+    static const QUMethod slot_1 = {"moveMessages", 2, param_slot_1 };
+    static const QMetaData slot_tbl[] = {
+	{ "updateTiles()", &slot_0, QMetaData::Private },
+	{ "moveMessages(int,int)", &slot_1, QMetaData::Private }
+    };
+    static const QUMethod signal_0 = {"resized", 0, 0 };
+    static const QMetaData signal_tbl[] = {
+	{ "resized()", &signal_0, QMetaData::Private }
+    };
+    metaObj = QMetaObject::new_metaobject(
+	"NetHackQtMapWindow", parentObject,
+	slot_tbl, 2,
+	signal_tbl, 1,
+#ifndef QT_NO_PROPERTIES
+	0, 0,
+	0, 0,
+#endif // QT_NO_PROPERTIES
+	0, 0 );
+    cleanUp_NetHackQtMapWindow.setMetaObject( metaObj );
+    return metaObj;
+}
+
+void* NetHackQtMapWindow::qt_cast( const char* clname )
+{
+    if ( !qstrcmp( clname, "NetHackQtMapWindow" ) )
+	return this;
+    if ( !qstrcmp( clname, "NetHackQtWindow" ) )
+	return (NetHackQtWindow*)this;
+    return QWidget::qt_cast( clname );
+}
+
+// SIGNAL resized
+void NetHackQtMapWindow::resized()
+{
+    activate_signal( staticMetaObject()->signalOffset() + 0 );
+}
+
+bool NetHackQtMapWindow::qt_invoke( int _id, QUObject* _o )
+{
+    switch ( _id - staticMetaObject()->slotOffset() ) {
+    case 0: updateTiles(); break;
+    case 1: moveMessages((int)static_QUType_int.get(_o+1),(int)static_QUType_int.get(_o+2)); break;
+    default:
+	return QWidget::qt_invoke( _id, _o );
+    }
+    return TRUE;
+}
+
+bool NetHackQtMapWindow::qt_emit( int _id, QUObject* _o )
+{
+    switch ( _id - staticMetaObject()->signalOffset() ) {
+    case 0: resized(); break;
+    default:
+	return QWidget::qt_emit(_id,_o);
+    }
+    return TRUE;
+}
+#ifndef QT_NO_PROPERTIES
+
+bool NetHackQtMapWindow::qt_property( int id, int f, QVariant* v)
+{
+    return QWidget::qt_property( id, f, v);
+}
+
+bool NetHackQtMapWindow::qt_static_property( QObject* , int , int , QVariant* ){ return FALSE; }
+#endif // QT_NO_PROPERTIES
+
+
+const char *NetHackQtMessageWindow::className() const
+{
+    return "NetHackQtMessageWindow";
+}
+
+QMetaObject *NetHackQtMessageWindow::metaObj = 0;
+static QMetaObjectCleanUp cleanUp_NetHackQtMessageWindow( "NetHackQtMessageWindow", &NetHackQtMessageWindow::staticMetaObject );
+
+#ifndef QT_NO_TRANSLATION
+QString NetHackQtMessageWindow::tr( const char *s, const char *c )
+{
+    if ( qApp )
+	return qApp->translate( "NetHackQtMessageWindow", s, c, QApplication::DefaultCodec );
+    else
+	return QString::fromLatin1( s );
+}
+#ifndef QT_NO_TRANSLATION_UTF8
+QString NetHackQtMessageWindow::trUtf8( const char *s, const char *c )
+{
+    if ( qApp )
+	return qApp->translate( "NetHackQtMessageWindow", s, c, QApplication::UnicodeUTF8 );
+    else
+	return QString::fromUtf8( s );
+}
+#endif // QT_NO_TRANSLATION_UTF8
+
+#endif // QT_NO_TRANSLATION
+
+QMetaObject* NetHackQtMessageWindow::staticMetaObject()
+{
+    if ( metaObj )
+	return metaObj;
+    QMetaObject* parentObject = QObject::staticMetaObject();
+    static const QUMethod slot_0 = {"updateFont", 0, 0 };
+    static const QMetaData slot_tbl[] = {
+	{ "updateFont()", &slot_0, QMetaData::Private }
+    };
+    metaObj = QMetaObject::new_metaobject(
+	"NetHackQtMessageWindow", parentObject,
+	slot_tbl, 1,
+	0, 0,
+#ifndef QT_NO_PROPERTIES
+	0, 0,
+	0, 0,
+#endif // QT_NO_PROPERTIES
+	0, 0 );
+    cleanUp_NetHackQtMessageWindow.setMetaObject( metaObj );
+    return metaObj;
+}
+
+void* NetHackQtMessageWindow::qt_cast( const char* clname )
+{
+    if ( !qstrcmp( clname, "NetHackQtMessageWindow" ) )
+	return this;
+    if ( !qstrcmp( clname, "NetHackQtWindow" ) )
+	return (NetHackQtWindow*)this;
+    return QObject::qt_cast( clname );
+}
+
+bool NetHackQtMessageWindow::qt_invoke( int _id, QUObject* _o )
+{
+    switch ( _id - staticMetaObject()->slotOffset() ) {
+    case 0: updateFont(); break;
+    default:
+	return QObject::qt_invoke( _id, _o );
+    }
+    return TRUE;
+}
+
+bool NetHackQtMessageWindow::qt_emit( int _id, QUObject* _o )
+{
+    return QObject::qt_emit(_id,_o);
+}
+#ifndef QT_NO_PROPERTIES
+
+bool NetHackQtMessageWindow::qt_property( int id, int f, QVariant* v)
+{
+    return QObject::qt_property( id, f, v);
+}
+
+bool NetHackQtMessageWindow::qt_static_property( QObject* , int , int , QVariant* ){ return FALSE; }
+#endif // QT_NO_PROPERTIES
+
+
+const char *NetHackQtStatusWindow::className() const
+{
+    return "NetHackQtStatusWindow";
+}
+
+QMetaObject *NetHackQtStatusWindow::metaObj = 0;
+static QMetaObjectCleanUp cleanUp_NetHackQtStatusWindow( "NetHackQtStatusWindow", &NetHackQtStatusWindow::staticMetaObject );
+
+#ifndef QT_NO_TRANSLATION
+QString NetHackQtStatusWindow::tr( const char *s, const char *c )
+{
+    if ( qApp )
+	return qApp->translate( "NetHackQtStatusWindow", s, c, QApplication::DefaultCodec );
+    else
+	return QString::fromLatin1( s );
+}
+#ifndef QT_NO_TRANSLATION_UTF8
+QString NetHackQtStatusWindow::trUtf8( const char *s, const char *c )
+{
+    if ( qApp )
+	return qApp->translate( "NetHackQtStatusWindow", s, c, QApplication::UnicodeUTF8 );
+    else
+	return QString::fromUtf8( s );
+}
+#endif // QT_NO_TRANSLATION_UTF8
+
+#endif // QT_NO_TRANSLATION
+
+QMetaObject* NetHackQtStatusWindow::staticMetaObject()
+{
+    if ( metaObj )
+	return metaObj;
+    QMetaObject* parentObject = QWidget::staticMetaObject();
+    static const QUMethod slot_0 = {"doUpdate", 0, 0 };
+    static const QMetaData slot_tbl[] = {
+	{ "doUpdate()", &slot_0, QMetaData::Private }
+    };
+    metaObj = QMetaObject::new_metaobject(
+	"NetHackQtStatusWindow", parentObject,
+	slot_tbl, 1,
+	0, 0,
+#ifndef QT_NO_PROPERTIES
+	0, 0,
+	0, 0,
+#endif // QT_NO_PROPERTIES
+	0, 0 );
+    cleanUp_NetHackQtStatusWindow.setMetaObject( metaObj );
+    return metaObj;
+}
+
+void* NetHackQtStatusWindow::qt_cast( const char* clname )
+{
+    if ( !qstrcmp( clname, "NetHackQtStatusWindow" ) )
+	return this;
+    if ( !qstrcmp( clname, "NetHackQtWindow" ) )
+	return (NetHackQtWindow*)this;
+    return QWidget::qt_cast( clname );
+}
+
+bool NetHackQtStatusWindow::qt_invoke( int _id, QUObject* _o )
+{
+    switch ( _id - staticMetaObject()->slotOffset() ) {
+    case 0: doUpdate(); break;
+    default:
+	return QWidget::qt_invoke( _id, _o );
+    }
+    return TRUE;
+}
+
+bool NetHackQtStatusWindow::qt_emit( int _id, QUObject* _o )
+{
+    return QWidget::qt_emit(_id,_o);
+}
+#ifndef QT_NO_PROPERTIES
+
+bool NetHackQtStatusWindow::qt_property( int id, int f, QVariant* v)
+{
+    return QWidget::qt_property( id, f, v);
+}
+
+bool NetHackQtStatusWindow::qt_static_property( QObject* , int , int , QVariant* ){ return FALSE; }
+#endif // QT_NO_PROPERTIES
+
+
+const char *NetHackQtMenuDialog::className() const
+{
+    return "NetHackQtMenuDialog";
+}
+
+QMetaObject *NetHackQtMenuDialog::metaObj = 0;
+static QMetaObjectCleanUp cleanUp_NetHackQtMenuDialog( "NetHackQtMenuDialog", &NetHackQtMenuDialog::staticMetaObject );
+
+#ifndef QT_NO_TRANSLATION
+QString NetHackQtMenuDialog::tr( const char *s, const char *c )
+{
+    if ( qApp )
+	return qApp->translate( "NetHackQtMenuDialog", s, c, QApplication::DefaultCodec );
+    else
+	return QString::fromLatin1( s );
+}
+#ifndef QT_NO_TRANSLATION_UTF8
+QString NetHackQtMenuDialog::trUtf8( const char *s, const char *c )
+{
+    if ( qApp )
+	return qApp->translate( "NetHackQtMenuDialog", s, c, QApplication::UnicodeUTF8 );
+    else
+	return QString::fromUtf8( s );
+}
+#endif // QT_NO_TRANSLATION_UTF8
+
+#endif // QT_NO_TRANSLATION
+
+QMetaObject* NetHackQtMenuDialog::staticMetaObject()
+{
+    if ( metaObj )
+	return metaObj;
+    QMetaObject* parentObject = QDialog::staticMetaObject();
+    static const QUMethod signal_0 = {"Resized", 0, 0 };
+    static const QMetaData signal_tbl[] = {
+	{ "Resized()", &signal_0, QMetaData::Protected }
+    };
+    metaObj = QMetaObject::new_metaobject(
+	"NetHackQtMenuDialog", parentObject,
+	0, 0,
+	signal_tbl, 1,
+#ifndef QT_NO_PROPERTIES
+	0, 0,
+	0, 0,
+#endif // QT_NO_PROPERTIES
+	0, 0 );
+    cleanUp_NetHackQtMenuDialog.setMetaObject( metaObj );
+    return metaObj;
+}
+
+void* NetHackQtMenuDialog::qt_cast( const char* clname )
+{
+    if ( !qstrcmp( clname, "NetHackQtMenuDialog" ) )
+	return this;
+    return QDialog::qt_cast( clname );
+}
+
+// SIGNAL Resized
+void NetHackQtMenuDialog::Resized()
+{
+    activate_signal( staticMetaObject()->signalOffset() + 0 );
+}
+
+bool NetHackQtMenuDialog::qt_invoke( int _id, QUObject* _o )
+{
+    return QDialog::qt_invoke(_id,_o);
+}
+
+bool NetHackQtMenuDialog::qt_emit( int _id, QUObject* _o )
+{
+    switch ( _id - staticMetaObject()->signalOffset() ) {
+    case 0: Resized(); break;
+    default:
+	return QDialog::qt_emit(_id,_o);
+    }
+    return TRUE;
+}
+#ifndef QT_NO_PROPERTIES
+
+bool NetHackQtMenuDialog::qt_property( int id, int f, QVariant* v)
+{
+    return QDialog::qt_property( id, f, v);
+}
+
+bool NetHackQtMenuDialog::qt_static_property( QObject* , int , int , QVariant* ){ return FALSE; }
+#endif // QT_NO_PROPERTIES
+
+
+const char *NetHackQtMenuWindow::className() const
+{
+    return "NetHackQtMenuWindow";
+}
+
+QMetaObject *NetHackQtMenuWindow::metaObj = 0;
+static QMetaObjectCleanUp cleanUp_NetHackQtMenuWindow( "NetHackQtMenuWindow", &NetHackQtMenuWindow::staticMetaObject );
+
+#ifndef QT_NO_TRANSLATION
+QString NetHackQtMenuWindow::tr( const char *s, const char *c )
+{
+    if ( qApp )
+	return qApp->translate( "NetHackQtMenuWindow", s, c, QApplication::DefaultCodec );
+    else
+	return QString::fromLatin1( s );
+}
+#ifndef QT_NO_TRANSLATION_UTF8
+QString NetHackQtMenuWindow::trUtf8( const char *s, const char *c )
+{
+    if ( qApp )
+	return qApp->translate( "NetHackQtMenuWindow", s, c, QApplication::UnicodeUTF8 );
+    else
+	return QString::fromUtf8( s );
+}
+#endif // QT_NO_TRANSLATION_UTF8
+
+#endif // QT_NO_TRANSLATION
+
+QMetaObject* NetHackQtMenuWindow::staticMetaObject()
+{
+    if ( metaObj )
+	return metaObj;
+    QMetaObject* parentObject = QTableView::staticMetaObject();
+    static const QUMethod slot_0 = {"All", 0, 0 };
+    static const QUMethod slot_1 = {"ChooseNone", 0, 0 };
+    static const QUMethod slot_2 = {"Invert", 0, 0 };
+    static const QUMethod slot_3 = {"Search", 0, 0 };
+    static const QUMethod slot_4 = {"Layout", 0, 0 };
+    static const QUParameter param_slot_5[] = {
+	{ 0, &static_QUType_int, 0, QUParameter::In }
+    };
+    static const QUMethod slot_5 = {"ToggleSelect", 1, param_slot_5 };
+    static const QMetaData slot_tbl[] = {
+	{ "All()", &slot_0, QMetaData::Public },
+	{ "ChooseNone()", &slot_1, QMetaData::Public },
+	{ "Invert()", &slot_2, QMetaData::Public },
+	{ "Search()", &slot_3, QMetaData::Public },
+	{ "Layout()", &slot_4, QMetaData::Public },
+	{ "ToggleSelect(int)", &slot_5, QMetaData::Public }
+    };
+    metaObj = QMetaObject::new_metaobject(
+	"NetHackQtMenuWindow", parentObject,
+	slot_tbl, 6,
+	0, 0,
+#ifndef QT_NO_PROPERTIES
+	0, 0,
+	0, 0,
+#endif // QT_NO_PROPERTIES
+	0, 0 );
+    cleanUp_NetHackQtMenuWindow.setMetaObject( metaObj );
+    return metaObj;
+}
+
+void* NetHackQtMenuWindow::qt_cast( const char* clname )
+{
+    if ( !qstrcmp( clname, "NetHackQtMenuWindow" ) )
+	return this;
+    if ( !qstrcmp( clname, "NetHackQtWindow" ) )
+	return (NetHackQtWindow*)this;
+    return QTableView::qt_cast( clname );
+}
+
+bool NetHackQtMenuWindow::qt_invoke( int _id, QUObject* _o )
+{
+    switch ( _id - staticMetaObject()->slotOffset() ) {
+    case 0: All(); break;
+    case 1: ChooseNone(); break;
+    case 2: Invert(); break;
+    case 3: Search(); break;
+    case 4: Layout(); break;
+    case 5: ToggleSelect((int)static_QUType_int.get(_o+1)); break;
+    default:
+	return QTableView::qt_invoke( _id, _o );
+    }
+    return TRUE;
+}
+
+bool NetHackQtMenuWindow::qt_emit( int _id, QUObject* _o )
+{
+    return QTableView::qt_emit(_id,_o);
+}
+#ifndef QT_NO_PROPERTIES
+
+bool NetHackQtMenuWindow::qt_property( int id, int f, QVariant* v)
+{
+    return QTableView::qt_property( id, f, v);
+}
+
+bool NetHackQtMenuWindow::qt_static_property( QObject* , int , int , QVariant* ){ return FALSE; }
+#endif // QT_NO_PROPERTIES
+
+
+const char *NetHackQtTextWindow::className() const
+{
+    return "NetHackQtTextWindow";
+}
+
+QMetaObject *NetHackQtTextWindow::metaObj = 0;
+static QMetaObjectCleanUp cleanUp_NetHackQtTextWindow( "NetHackQtTextWindow", &NetHackQtTextWindow::staticMetaObject );
+
+#ifndef QT_NO_TRANSLATION
+QString NetHackQtTextWindow::tr( const char *s, const char *c )
+{
+    if ( qApp )
+	return qApp->translate( "NetHackQtTextWindow", s, c, QApplication::DefaultCodec );
+    else
+	return QString::fromLatin1( s );
+}
+#ifndef QT_NO_TRANSLATION_UTF8
+QString NetHackQtTextWindow::trUtf8( const char *s, const char *c )
+{
+    if ( qApp )
+	return qApp->translate( "NetHackQtTextWindow", s, c, QApplication::UnicodeUTF8 );
+    else
+	return QString::fromUtf8( s );
+}
+#endif // QT_NO_TRANSLATION_UTF8
+
+#endif // QT_NO_TRANSLATION
+
+QMetaObject* NetHackQtTextWindow::staticMetaObject()
+{
+    if ( metaObj )
+	return metaObj;
+    QMetaObject* parentObject = QDialog::staticMetaObject();
+    static const QUMethod slot_0 = {"Search", 0, 0 };
+    static const QUMethod slot_1 = {"doUpdate", 0, 0 };
+    static const QMetaData slot_tbl[] = {
+	{ "Search()", &slot_0, QMetaData::Public },
+	{ "doUpdate()", &slot_1, QMetaData::Private }
+    };
+    metaObj = QMetaObject::new_metaobject(
+	"NetHackQtTextWindow", parentObject,
+	slot_tbl, 2,
+	0, 0,
+#ifndef QT_NO_PROPERTIES
+	0, 0,
+	0, 0,
+#endif // QT_NO_PROPERTIES
+	0, 0 );
+    cleanUp_NetHackQtTextWindow.setMetaObject( metaObj );
+    return metaObj;
+}
+
+void* NetHackQtTextWindow::qt_cast( const char* clname )
+{
+    if ( !qstrcmp( clname, "NetHackQtTextWindow" ) )
+	return this;
+    if ( !qstrcmp( clname, "NetHackQtWindow" ) )
+	return (NetHackQtWindow*)this;
+    return QDialog::qt_cast( clname );
+}
+
+bool NetHackQtTextWindow::qt_invoke( int _id, QUObject* _o )
+{
+    switch ( _id - staticMetaObject()->slotOffset() ) {
+    case 0: Search(); break;
+    case 1: doUpdate(); break;
+    default:
+	return QDialog::qt_invoke( _id, _o );
+    }
+    return TRUE;
+}
+
+bool NetHackQtTextWindow::qt_emit( int _id, QUObject* _o )
+{
+    return QDialog::qt_emit(_id,_o);
+}
+#ifndef QT_NO_PROPERTIES
+
+bool NetHackQtTextWindow::qt_property( int id, int f, QVariant* v)
+{
+    return QDialog::qt_property( id, f, v);
+}
+
+bool NetHackQtTextWindow::qt_static_property( QObject* , int , int , QVariant* ){ return FALSE; }
+#endif // QT_NO_PROPERTIES
+
+
+const char *NetHackQtMainWindow::className() const
+{
+    return "NetHackQtMainWindow";
+}
+
+QMetaObject *NetHackQtMainWindow::metaObj = 0;
+static QMetaObjectCleanUp cleanUp_NetHackQtMainWindow( "NetHackQtMainWindow", &NetHackQtMainWindow::staticMetaObject );
+
+#ifndef QT_NO_TRANSLATION
+QString NetHackQtMainWindow::tr( const char *s, const char *c )
+{
+    if ( qApp )
+	return qApp->translate( "NetHackQtMainWindow", s, c, QApplication::DefaultCodec );
+    else
+	return QString::fromLatin1( s );
+}
+#ifndef QT_NO_TRANSLATION_UTF8
+QString NetHackQtMainWindow::trUtf8( const char *s, const char *c )
+{
+    if ( qApp )
+	return qApp->translate( "NetHackQtMainWindow", s, c, QApplication::UnicodeUTF8 );
+    else
+	return QString::fromUtf8( s );
+}
+#endif // QT_NO_TRANSLATION_UTF8
+
+#endif // QT_NO_TRANSLATION
+
+QMetaObject* NetHackQtMainWindow::staticMetaObject()
+{
+    if ( metaObj )
+	return metaObj;
+    QMetaObject* parentObject = KTopLevelWidget::staticMetaObject();
+    static const QUParameter param_slot_0[] = {
+	{ 0, &static_QUType_int, 0, QUParameter::In }
+    };
+    static const QUMethod slot_0 = {"doMenuItem", 1, param_slot_0 };
+    static const QUParameter param_slot_1[] = {
+	{ 0, &static_QUType_QString, 0, QUParameter::In }
+    };
+    static const QUMethod slot_1 = {"doKeys", 1, param_slot_1 };
+    static const QUMethod slot_2 = {"layout", 0, 0 };
+    static const QUMethod slot_3 = {"raiseMap", 0, 0 };
+    static const QUMethod slot_4 = {"zoomMap", 0, 0 };
+    static const QUMethod slot_5 = {"raiseMessages", 0, 0 };
+    static const QUMethod slot_6 = {"raiseStatus", 0, 0 };
+    static const QMetaData slot_tbl[] = {
+	{ "doMenuItem(int)", &slot_0, QMetaData::Public },
+	{ "doKeys(const QString&)", &slot_1, QMetaData::Public },
+	{ "layout()", &slot_2, QMetaData::Private },
+	{ "raiseMap()", &slot_3, QMetaData::Private },
+	{ "zoomMap()", &slot_4, QMetaData::Private },
+	{ "raiseMessages()", &slot_5, QMetaData::Private },
+	{ "raiseStatus()", &slot_6, QMetaData::Private }
+    };
+    metaObj = QMetaObject::new_metaobject(
+	"NetHackQtMainWindow", parentObject,
+	slot_tbl, 7,
+	0, 0,
+#ifndef QT_NO_PROPERTIES
+	0, 0,
+	0, 0,
+#endif // QT_NO_PROPERTIES
+	0, 0 );
+    cleanUp_NetHackQtMainWindow.setMetaObject( metaObj );
+    return metaObj;
+}
+
+void* NetHackQtMainWindow::qt_cast( const char* clname )
+{
+    if ( !qstrcmp( clname, "NetHackQtMainWindow" ) )
+	return this;
+    return KTopLevelWidget::qt_cast( clname );
+}
+
+bool NetHackQtMainWindow::qt_invoke( int _id, QUObject* _o )
+{
+    switch ( _id - staticMetaObject()->slotOffset() ) {
+    case 0: doMenuItem((int)static_QUType_int.get(_o+1)); break;
+    case 1: doKeys((const QString&)static_QUType_QString.get(_o+1)); break;
+    case 2: layout(); break;
+    case 3: raiseMap(); break;
+    case 4: zoomMap(); break;
+    case 5: raiseMessages(); break;
+    case 6: raiseStatus(); break;
+    default:
+	return KTopLevelWidget::qt_invoke( _id, _o );
+    }
+    return TRUE;
+}
+
+bool NetHackQtMainWindow::qt_emit( int _id, QUObject* _o )
+{
+    return KTopLevelWidget::qt_emit(_id,_o);
+}
+#ifndef QT_NO_PROPERTIES
+
+bool NetHackQtMainWindow::qt_property( int id, int f, QVariant* v)
+{
+    return KTopLevelWidget::qt_property( id, f, v);
+}
+
+bool NetHackQtMainWindow::qt_static_property( QObject* , int , int , QVariant* ){ return FALSE; }
+#endif // QT_NO_PROPERTIES
+
+
+const char *NetHackQtYnDialog::className() const
+{
+    return "NetHackQtYnDialog";
+}
+
+QMetaObject *NetHackQtYnDialog::metaObj = 0;
+static QMetaObjectCleanUp cleanUp_NetHackQtYnDialog( "NetHackQtYnDialog", &NetHackQtYnDialog::staticMetaObject );
+
+#ifndef QT_NO_TRANSLATION
+QString NetHackQtYnDialog::tr( const char *s, const char *c )
+{
+    if ( qApp )
+	return qApp->translate( "NetHackQtYnDialog", s, c, QApplication::DefaultCodec );
+    else
+	return QString::fromLatin1( s );
+}
+#ifndef QT_NO_TRANSLATION_UTF8
+QString NetHackQtYnDialog::trUtf8( const char *s, const char *c )
+{
+    if ( qApp )
+	return qApp->translate( "NetHackQtYnDialog", s, c, QApplication::UnicodeUTF8 );
+    else
+	return QString::fromUtf8( s );
+}
+#endif // QT_NO_TRANSLATION_UTF8
+
+#endif // QT_NO_TRANSLATION
+
+QMetaObject* NetHackQtYnDialog::staticMetaObject()
+{
+    if ( metaObj )
+	return metaObj;
+    QMetaObject* parentObject = QDialog::staticMetaObject();
+    static const QUParameter param_slot_0[] = {
+	{ 0, &static_QUType_int, 0, QUParameter::In }
+    };
+    static const QUMethod slot_0 = {"doneItem", 1, param_slot_0 };
+    static const QMetaData slot_tbl[] = {
+	{ "doneItem(int)", &slot_0, QMetaData::Private }
+    };
+    metaObj = QMetaObject::new_metaobject(
+	"NetHackQtYnDialog", parentObject,
+	slot_tbl, 1,
+	0, 0,
+#ifndef QT_NO_PROPERTIES
+	0, 0,
+	0, 0,
+#endif // QT_NO_PROPERTIES
+	0, 0 );
+    cleanUp_NetHackQtYnDialog.setMetaObject( metaObj );
+    return metaObj;
+}
+
+void* NetHackQtYnDialog::qt_cast( const char* clname )
+{
+    if ( !qstrcmp( clname, "NetHackQtYnDialog" ) )
+	return this;
+    return QDialog::qt_cast( clname );
+}
+
+bool NetHackQtYnDialog::qt_invoke( int _id, QUObject* _o )
+{
+    switch ( _id - staticMetaObject()->slotOffset() ) {
+    case 0: doneItem((int)static_QUType_int.get(_o+1)); break;
+    default:
+	return QDialog::qt_invoke( _id, _o );
+    }
+    return TRUE;
+}
+
+bool NetHackQtYnDialog::qt_emit( int _id, QUObject* _o )
+{
+    return QDialog::qt_emit(_id,_o);
+}
+#ifndef QT_NO_PROPERTIES
+
+bool NetHackQtYnDialog::qt_property( int id, int f, QVariant* v)
+{
+    return QDialog::qt_property( id, f, v);
+}
+
+bool NetHackQtYnDialog::qt_static_property( QObject* , int , int , QVariant* ){ return FALSE; }
+#endif // QT_NO_PROPERTIES

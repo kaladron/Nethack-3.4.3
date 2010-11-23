@@ -1,0 +1,6 @@
+?package(nethack-gnome):needs="x11" \
+        command="/usr/games/nethack-gnome" \
+	hints="Roguelike,Maze,Dungeon" \
+        section="Games/Adventure" \
+	title="GNOME NetHack" \
+	icon="/usr/share/pixmaps/nethack.xpm"

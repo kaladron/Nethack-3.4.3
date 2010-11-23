@@ -1,0 +1,14 @@
+patching file dat/opthelp
+patching file doc/Guidebook.mn
+patching file doc/Guidebook.tex
+patching file doc/Guidebook.txt
+patching file include/extern.h
+patching file include/flag.h
+patching file src/end.c
+Hunk #1 succeeded at 1065 with fuzz 1.
+patching file src/invent.c
+Hunk #1 succeeded at 1713 with fuzz 1.
+patching file src/objnam.c
+patching file src/options.c
+patching file src/pickup.c
+patching file include/config.h

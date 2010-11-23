@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -e
+
+update-alternatives --install /usr/games/nethack nethack \
+  /usr/lib/games/nethack/nethack-qt-tty.sh 60
+
+update-alternatives --install /usr/games/nethack nethack \
+  /usr/lib/games/nethack/nethack-qt.sh 50
+
+#DEBHELPER#

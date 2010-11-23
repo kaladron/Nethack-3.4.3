@@ -1,0 +1,61 @@
+#! /bin/sh -e
+## 04_manpage_paths.dpatch by Joshua Kwan <joshk@triplehelix.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Change paths in the default manpage to what is used in Debian + other stuff.
+
+if [ $# -ne 1 ]; then
+    echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
+    exit 1
+fi
+case "$1" in
+    -patch) patch -f --no-backup-if-mismatch -p1 < $0;;
+    -unpatch) patch -f --no-backup-if-mismatch -R -p1 < $0;;
+    *)
+        echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
+        exit 1;;
+esac
+
+exit 0
+--- nethack-3.4.1.orig/doc/nethack.6
++++ nethack-3.4.1/doc/nethack.6
+@@ -108,9 +108,10 @@
+ graphics characters), options may also be included in a configuration
+ file.
+ The default is located in your home directory and
+-named .nethackrc on Unix systems.  On other systems, the default may be
+-different, usually NetHack.cnf.  On DOS or Windows, the name is
+-defaults.nh, while on the Macintosh or BeOS, it is NetHack Defaults.
++named .nethackrc on Unix systems.  
++On Debian systems, use .nethackrc.gnome for the Gnome windowing port,
++use .nethackrc.x11 for the X11 windowing port, and use .nethackrc.qt for the
++QT windowing port.  You can use .nethackrc.tty for the non-graphical version.
+ The configuration file's location may be specified by setting NETHACKOPTIONS
+ to a string consisting of an @ character followed by the filename.
+ .PP
+@@ -197,7 +198,7 @@
+ supplies a directory which is to serve as the playground.
+ It overrides the value from NETHACKDIR, HACKDIR,
+ or the directory specified by the game administrator during compilation
+-(usually /usr/games/lib/nethackdir).
++(usually /usr/lib/games/nethack).
+ This option is usually only useful to the game administrator.
+ The playground must contain several auxiliary files such as help files,
+ the list of top scorers, and a subdirectory
+@@ -222,7 +223,7 @@
+ distinction, as he may eventually release a new version of his own.
+ .SH FILES
+ .PP
+-All files are in the playground, normally /usr/games/lib/nethackdir.
++All files are in the playground, normally /usr/lib/games/nethack.
+ If DLB was defined during the compile, the data files and special levels
+ will be inside a larger file, normally nhdat, instead of being separate
+ files.
+@@ -283,7 +284,7 @@
+ .br
+ MAILREADER	Replacement for default reader
+ .br
+-	(probably /bin/mail or /usr/ucb/mail).
++	(probably /usr/bin/mail).
+ .br
+ NETHACKDIR	Playground.

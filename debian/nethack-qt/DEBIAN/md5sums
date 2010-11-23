@@ -1,0 +1,10 @@
+64f6d99aa3d580425faf133543313605  usr/lib/games/nethack/nethack-qt-tty.sh
+b5d1f5bb15e1193c0c8b4d713a71642e  usr/lib/games/nethack/nethack-qt.sh
+6aa08e4b44ce6c8bf34cfa9474492941  usr/lib/games/nethack/nethack-qt
+9f5855a137b27956807712528887d317  usr/share/doc/nethack-qt/README.Debian.gz
+b07190bd0a137e4db044a23980e6dd4a  usr/share/doc/nethack-qt/copyright
+e45bdabe427449d20b33c1be2efceeb8  usr/share/doc/nethack-qt/README.menucolor
+399ac66f662deff79c68b4fb71897078  usr/share/doc/nethack-qt/changelog.Debian.gz
+c0204b1729a8dfc326bfbdc1e851c663  usr/share/menu/nethack-qt
+c4e76a6b3ddb7558f76d13aac43ce318  usr/share/lintian/overrides/nethack-qt
+f860a7853def140065d445b438b72bae  usr/share/applications/nethack-qt.desktop

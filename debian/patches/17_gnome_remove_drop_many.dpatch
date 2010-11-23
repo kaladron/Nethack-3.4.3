@@ -1,0 +1,35 @@
+#! /bin/sh -e
+## 17_gnome_remove_drop_many.dpatch by Joshua Kwan <joshk@triplehelix.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Bug#154750; drop many and drop are the same, so pull the former
+
+if [ $# -ne 1 ]; then
+    echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
+    exit 1
+fi
+case "$1" in
+    -patch) patch -f --no-backup-if-mismatch -p1 < $0;;
+    -unpatch) patch -f --no-backup-if-mismatch -R -p1 < $0;;
+    *)
+        echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
+        exit 1;;
+esac
+
+exit 0
+
+--- nethack/win/gnome/gnmain.c~	2003-10-24 11:29:11.000000000 -0700
++++ nethack/win/gnome/gnmain.c	2003-10-24 11:29:19.000000000 -0700
+@@ -381,12 +381,6 @@
+ 	       GINT_TO_POINTER('d'), NULL, GNOME_APP_PIXMAP_NONE, NULL, 'd',0
+ 	   },
+ 	   { 
+-	       GNOME_APP_UI_ITEM, N_("Drop Many"), 
+-	       N_("drop selected types of objects"),
+-	       ghack_accelerator_selected, 
+-	       GINT_TO_POINTER('D'), NULL, GNOME_APP_PIXMAP_NONE, NULL, 'D',GDK_SHIFT_MASK
+-	   },
+-	   { 
+ 	       GNOME_APP_UI_ITEM, N_("Eat"), 
+ 	       N_("eat something"),
+ 	       ghack_accelerator_selected, 

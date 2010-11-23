@@ -1,0 +1,3 @@
+patching file win/Qt/qt_win.cpp
+Hunk #1 succeeded at 59 with fuzz 2 (offset 1 line).
+patching file include/qt_win.h

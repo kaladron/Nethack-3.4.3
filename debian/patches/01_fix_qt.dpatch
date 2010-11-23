@@ -1,0 +1,41 @@
+#! /bin/sh -e
+## 01_qt_fixes.dpatch by Joshua Kwan <joshk@triplehelix.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Various accumulated Qt fixes.
+
+if [ $# -ne 1 ]; then
+    echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
+    exit 1
+fi
+case "$1" in
+    -patch) patch -f --no-backup-if-mismatch -p1 < $0;;
+    -unpatch) patch -f --no-backup-if-mismatch -R -p1 < $0;;
+    *)
+        echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
+        exit 1;;
+esac
+
+exit 0
+
+--- nethack-3.4.1.orig/win/Qt/qt_win.cpp
++++ nethack-3.4.1/win/Qt/qt_win.cpp
+@@ -58,6 +58,7 @@
+ #include "patchlevel.h"
+ #include "tile2x11.h"
+ #undef Warning
++#undef Invisible
+ #undef red
+ #undef green
+ #undef blue
+--- nethack-3.4.1.orig/include/qt_win.h
++++ nethack-3.4.1/include/qt_win.h
+@@ -34,7 +34,7 @@
+ #include <qmessagebox.h>
+ #include <qpixmap.h>
+ #include <qimage.h>
+-#include <qarray.h>
++#include <qmemarray.h>
+ #include <qcombobox.h>
+ #include <qscrollview.h>
+ #if QT_VERSION >= 300

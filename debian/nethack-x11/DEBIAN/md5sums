@@ -1,0 +1,12 @@
+ee00893e9b847b57d498c687be38f611  usr/lib/games/nethack/nethack-x11
+f688cbbe2b32d3f039dfcd44afdd42e8  usr/lib/games/nethack/nethack-x11.sh
+0d222fcc6f72e2e800e2df7a3029acbc  usr/lib/games/nethack/nethack-x11-tty.sh
+9f5855a137b27956807712528887d317  usr/share/doc/nethack-x11/README.Debian.gz
+b07190bd0a137e4db044a23980e6dd4a  usr/share/doc/nethack-x11/copyright
+e45bdabe427449d20b33c1be2efceeb8  usr/share/doc/nethack-x11/README.menucolor
+a0fea1fd752a716787d2e67fec211b15  usr/share/doc/nethack-x11/examples/NetHack.ad.gz
+399ac66f662deff79c68b4fb71897078  usr/share/doc/nethack-x11/changelog.Debian.gz
+c16441e53cd8a13a69d5ed036fc4d0e6  usr/share/fonts/X11/misc/nh10.pcf.gz
+5e346237a9bc1465144f906565c1966e  usr/share/menu/nethack-x11
+ade5c82c75808a24a88d176167aa209d  usr/share/lintian/overrides/nethack-x11
+eb316221a6e83409bcdce1943a9c613c  usr/share/applications/nethack-x11.desktop

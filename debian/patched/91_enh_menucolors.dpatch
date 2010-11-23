@@ -1,0 +1,20 @@
+patching file dat/opthelp
+Hunk #1 succeeded at 74 with fuzz 2 (offset 3 lines).
+Hunk #2 succeeded at 175 (offset 3 lines).
+patching file include/color.h
+patching file include/config.h
+Hunk #1 succeeded at 353 (offset 5 lines).
+patching file include/extern.h
+patching file include/flag.h
+Hunk #1 succeeded at 186 (offset 3 lines).
+patching file README.menucolor
+patching file src/decl.c
+patching file src/files.c
+patching file src/options.c
+Hunk #1 succeeded at 128 (offset 3 lines).
+Hunk #2 succeeded at 258 (offset 3 lines).
+Hunk #3 succeeded at 977 (offset 3 lines).
+Hunk #4 succeeded at 1260 (offset 3 lines).
+patching file src/save.c
+patching file util/makedefs.c
+patching file win/tty/wintty.c

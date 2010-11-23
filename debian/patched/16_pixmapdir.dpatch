@@ -1,0 +1,9 @@
+patching file win/Qt/qt_win.cpp
+Hunk #1 succeeded at 3175 (offset -2 lines).
+Hunk #2 succeeded at 4284 (offset -2 lines).
+patching file win/X11/winX.c
+patching file win/gnome/gnbind.c
+Hunk #1 succeeded at 7 with fuzz 1.
+Hunk #2 succeeded at 100 (offset 1 line).
+patching file win/gnome/gnopts.c
+patching file win/gnome/gnmap.c

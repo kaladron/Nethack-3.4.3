@@ -1,0 +1,74 @@
+Patches applied in the Debian version of :
+
+debian/patches/01_fix_qt.dpatch (Joshua Kwan <joshk@triplehelix.org>):
+  Various accumulated Qt fixes.
+
+debian/patches/02_SECURITY_recover_secure.dpatch (Joshua Kwan <joshk@triplehelix.org>):
+  Make sure the user calling recover owns the file.
+
+debian/patches/04_manpage_paths.dpatch (Joshua Kwan <joshk@triplehelix.org>):
+  Change paths in the default manpage to what is used in Debian + other stuff.
+
+debian/patches/05_makefile_logic.dpatch (Aaron Lehmann <aaronl@vitelus.com>):
+  Move some of the logical burden to make
+
+debian/patches/06_x11_data.dpatch (Joshua Kwan <joshk@triplehelix.org>):
+  Add optional tiles to the X11 build.
+
+debian/patches/08_linux_specifics.dpatch (Joshua Kwan <joshk@triplehelix.org>):
+  Debian (and Linux) specifics defined in unixconf.h.
+
+debian/patches/09_use_gnu_source.dpatch (Joshua Kwan <joshk@triplehelix.org>):
+  Define _GNU_SOURCE for RTLD_NEXT.
+
+debian/patches/10_gnome_add_quiver.dpatch (Joshua Kwan <joshk@triplehelix.org>):
+  Add a 'Quiver/Ready' option to the GNOME UI menu.
+
+debian/patches/12_lisp_windowing.dpatch (Ben Gertzfield <che@debian.org>):
+  Add LISP-based windowing system
+
+debian/patches/13_simple_mail.dpatch (Joshua Kwan <joshk@triplehelix.org>):
+  Simple mail
+
+debian/patches/14_common_config.dpatch (Joshua Kwan <joshk@triplehelix.org>):
+  Common config.h for all binary packages.
+
+debian/patches/15_recover_errormsg.dpatch (Ian Jackson <sysadmin@chiark.greenend.org.uk>):
+  Be a little bit more useful with recover's error messages
+
+debian/patches/16_pixmapdir.dpatch (Joshua Kwan <joshk@triplehelix.org>):
+  Use /usr/share/pixmaps/nethack/ for pretty pictures.
+
+debian/patches/17_gnome_remove_drop_many.dpatch (Joshua Kwan <joshk@triplehelix.org>):
+  Bug#154750; drop many and drop are the same, so pull the former
+
+debian/patches/18_overridewin.dpatch (Joshua Kwan <joshk@triplehelix.org>):
+  Better way to do it.
+
+debian/patches/19_gnome_ext_events.dpatch (<joshk@triplehelix.org>):
+  Extended menu didn't handle enough events. Handle stuff like mouse click
+
+debian/patches/20_gcc4_fix.dpatch (Andreas Jochens <aj@andaco.de>):
+  gcc 4 fix
+
+debian/patches/21_gnome_umask.dpatch (Joshua Kwan <joshk@triplehelix.org>):
+  No description.
+
+debian/patches/90_enh_hpmon.dpatch (Ralph Churchill <mrchucho@yahoo.com>):
+  Enables color HP monitor for textmode NetHack.
+
+debian/patches/91_enh_menucolors.dpatch (Pasi Kallinen <pkalli@cs.joensuu.fi>):
+  Pasi Kallinen's patch to add colors to inventory items.
+
+debian/patches/92_enh_paranoid_hit.dpatch (Joshua Kwan <joshk@triplehelix.org>):
+  Paranoid hit asks you to confirm 'yes' instead of 'y' when hitting peacefuls
+
+debian/patches/93_enh_dump.dpatch (Tom Friedetzky, Jukka Lahtinen, Darshan Shaligram):
+  Dump patch by Jukka Lahtinen.
+
+debian/patches/94_enh_sortloot.dpatch (Jeroen Demeyer and Jukka Lahtinen):
+  Sort item lists alphabetically
+
+debian/patches/95_enh_engulf_prayers.dpatch (Joshua Kwan):
+  Prayer can expel you from being swallowed.
+

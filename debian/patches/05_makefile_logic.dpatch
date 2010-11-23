@@ -1,0 +1,165 @@
+#! /bin/sh -e
+## 05_makefile_logic.dpatch by Aaron Lehmann <aaronl@vitelus.com>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Move some of the logical burden to make
+
+if [ $# -ne 1 ]; then
+    echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
+    exit 1
+fi
+case "$1" in
+    -patch) patch -f --no-backup-if-mismatch -p1 < $0;;
+    -unpatch) patch -f --no-backup-if-mismatch -R -p1 < $0;;
+    *)
+        echo >&2 "`basename $0`: script expects -patch|-unpatch as argument"
+        exit 1;;
+esac
+
+exit 0
+
+--- nethack-3.4.3/sys/unix/Makefile.src~	2003-12-22 01:54:52.000000000 -0800
++++ nethack-3.4.3/sys/unix/Makefile.src	2003-12-22 01:55:01.000000000 -0800
+@@ -125,7 +125,7 @@
+ # flags for Linux
+ #   compile normally
+ # CFLAGS = -O2 -fomit-frame-pointer -I../include
+-# LFLAGS = -L/usr/X11R6/lib
++LFLAGS = -L/usr/X11R6/lib
+ #   OR compile backwards compatible a.out format
+ # CFLAGS = -O2 -b i486-linuxaout -fomit-frame-pointer -I../include
+ # LFLAGS = -b i486-linuxaout -L/usr/X11R6/lib
+@@ -146,18 +146,16 @@
+ # directories.  The ones given below is the usual spot for linux systems.
+ # The paths are for glibconfig.h and gnomesupport.h respectively.
+ #
+-GNOMEINC=-I/usr/lib/glib/include -I/usr/lib/gnome-libs/include -I../win/gnome
++GNOMEINC=$(shell gnome-config --cflags gnomeui)
+ 
+ # flags for debugging:
+ # CFLAGS = -g -I../include
+ 
+-CFLAGS = -O -I../include
+-LFLAGS = 
+-
+ # The Qt and Be window systems are written in C++, while the rest of
+ # NetHack is standard C.  If using Qt, uncomment the LINK line here to get
+ # the C++ libraries linked in.
+-CXXFLAGS = $(CFLAGS) -I. -I$(QTDIR)/include
++QTDIR = /usr
++CXXFLAGS = $(CFLAGS) -I. -I$(QTDIR)/include/qt3
+ CXX=g++
+ #LINK=g++
+ #	For cross-compiling, eg. with gcc on Linux (see also CC further up):
+@@ -212,10 +210,41 @@
+ #	../win/BeOS/NHMenuWindow.cpp ../win/BeOS/NHMapWindow.cpp tile.c
+ #WINBEOBJ = winbe.o NHWindow.o NHMenuWindow.o NHMapWindow.o tile.o
+ 
++# Files for the lisp port
++WINLISPSRC = ../win/lisp/winlisp.c tile.c
++WINLISPOBJ = winlisp.o tile.o
++
+ #
+ #
+-WINSRC = $(WINTTYSRC)
+-WINOBJ = $(WINTTYOBJ)
++ifeq ($(WIN),console)
++	WINSRC = $(WINTTYSRC)
++	WINOBJ = $(WINTTYOBJ)
++	WINLIB = $(WINTTYLIB)
++endif
++ifeq ($(WIN),x11)
++	WINSRC = $(WINTTYSRC) $(WINX11SRC)
++	WINOBJ = $(WINTTYOBJ) $(WINX11OBJ)
++	WINLIB = $(WINTTYLIB) $(WINX11LIB)
++	CFLAGS += -I/usr/X11R6/include -DX11_GRAPHICS
++endif
++ifeq ($(WIN),gnome)
++	WINSRC = $(WINTTYSRC) $(WINGNOMESRC)
++	WINOBJ = $(WINTTYOBJ) $(WINGNOMEOBJ)
++	WINLIB = $(WINTTYLIB) $(WINGNOMELIB)
++	CFLAGS += -DGNOME_GRAPHICS
++endif
++ifeq ($(WIN),qt)
++	WINSRC = $(WINTTYSRC) $(WINQTSRC)
++	WINOBJ = $(WINTTYOBJ) $(WINQTOBJ)
++	WINLIB = $(WINTTYLIB) $(WINQTLIB)
++	CFLAGS += -DQT_GRAPHICS
++endif
++ifeq ($(WIN),lisp)
++	WINSRC = $(WINLISPSRC)
++	WINOBJ = $(WINLISPOBJ)
++	WINLIB = $(WINLISPLIB)
++	CFLAGS += -DLISP_GRAPHICS -DDEFAULT_WINDOW_SYS=\"lisp\"
++endif
+ 
+ # on some systems the termcap library is in -ltermcap or -lcurses
+ # on 386 Xenix, the -ltermlib tputs() seems not to work; use -lcurses instead
+@@ -230,24 +259,24 @@
+ # WINTTYLIB = -ltermcap
+ # WINTTYLIB = -lcurses
+ # WINTTYLIB = -lcurses16
+-# WINTTYLIB = -lncurses
+-WINTTYLIB = -ltermlib
++WINTTYLIB = -lncurses
++# WINTTYLIB = -ltermlib
+ #
+ # libraries for X11
+ # If USE_XPM is defined in config.h, you will also need -lXpm here.
+-WINX11LIB = -lXaw -lXmu -lXext -lXt -lX11
++WINX11LIB = -lXaw -lXmu -lXext -lXt -lXpm -lX11 -lm
+ # WINX11LIB = -lXaw -lXmu -lXt -lX11
+ # WINX11LIB = -lXaw -lXmu -lXext -lXt -lXpm -lX11 -lm
+ # WINX11LIB = -lXaw -lXmu -lXpm -lXext -lXt -lX11 -lSM -lICE -lm # BSD/OS 2.0
+ #
+ # libraries for Qt
+-WINQTLIB = -L$(QTDIR)/lib -lqt
++WINQTLIB = -L$(QTDIR)/lib -lqt-mt
+ #
+ # libraries for KDE (with Qt)
+ WINKDELIB = -lkdecore -lkdeui -lXext
+ #
+ # libraries for Gnome
+-WINGNOMELIB = -lgnomeui -lgnome -lart_lgpl -lgtk -lgdk -lpopt
++WINGNOMELIB = $(shell gnome-config --libs gnomeui)
+ #
+ # libraries for Gem port
+ WINGEMLIB = -le_gem -lgem
+@@ -255,8 +284,6 @@
+ # libraries for BeOS 
+ WINBELIB = -lbe
+ 
+-WINLIB = $(WINTTYLIB)
+-
+ # any other strange libraries your system needs (for Sysunix only -- the more
+ # specialized targets should already be right)
+ #
+@@ -338,7 +365,7 @@
+ GENCSRC = monstr.c vis_tab.c	#tile.c
+ 
+ # all windowing-system-dependent .c (for dependencies and such)
+-WINCSRC = $(WINTTYSRC) $(WINX11SRC) $(WINGNOMESRC) $(WINGEMSRC)
++WINCSRC = $(WINTTYSRC) $(WINX11SRC) $(WINGNOMESRC) $(WINGEMSRC) $(WINLISPSRC)
+ # all windowing-system-dependent .cpp (for dependencies and such)
+ WINCXXSRC = $(WINQTSRC) $(WINBESRC)
+ 
+@@ -683,6 +710,9 @@
+ 	$(CC) $(CFLAGS) -c ../win/gem/load_img.c
+ gr_rect.o: ../win/gem/gr_rect.c ../include/gr_rect.h
+ 	$(CC) $(CFLAGS) -c ../win/gem/gr_rect.c
++winlisp.o: ../win/lisp/winlisp.c $(HACK_H) ../include/winlisp.h \
++		../include/func_tab.h ../include/dlb.h ../include/patchlevel.h
++	$(CC) $(CFLAGS) -c ../win/lisp/winlisp.c
+ tile.o: tile.c $(HACK_H)
+ qt_win.o: ../win/Qt/qt_win.cpp $(HACK_H) ../include/func_tab.h \
+ 		../include/dlb.h ../include/patchlevel.h ../include/tile2x11.h \
+@@ -803,7 +833,8 @@
+ weapon.o: weapon.c $(HACK_H)
+ were.o: were.c $(HACK_H)
+ wield.o: wield.c $(HACK_H)
+-windows.o: windows.c $(HACK_H) ../include/wingem.h ../include/winGnome.h
++windows.o: windows.c $(HACK_H) ../include/wingem.h ../include/winGnome.h \
++		../include/winlisp.h
+ wizard.o: wizard.c $(HACK_H) ../include/qtext.h ../include/epri.h
+ worm.o: worm.c $(HACK_H) ../include/lev.h
+ worn.o: worn.c $(HACK_H)

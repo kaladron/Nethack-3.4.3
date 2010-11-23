@@ -1,0 +1,168 @@
+#!/usr/bin/make -f
+
+# Nethack build script for Debian
+#
+# Behold, mortal, the origins of this makefile...
+#
+# Ben Gertzfield wrote the original debian/rules in 1997.
+# Joshua Kwan revised it in 2003.
+#
+# Copyright 1997-2003 Ben Gertzfield, Joshua Kwan. This script is
+# released under the GNU General Public License, version 2 or later.
+
+include /usr/share/dpatch/dpatch.make
+
+ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
+	optimize := -O0
+else
+	optimize := -O2
+endif
+
+export CFLAGS = $(optimize) -I../include -g -Wall -DGCC_WARN -D__CORRECT_ISO_CPP_STRINGS_H_PROTO
+
+TARGETS = console lisp x11 qt
+
+TARGET_NAMES = $(TARGETS:%=build-%)
+TARGET_STAMPS = $(TARGET_NAMES:%=%-stamp)
+
+build: patch-stamp build-stamp
+build-stamp: $(TARGET_NAMES) build-common
+	touch build-stamp
+
+Makefile:
+# setup.sh makes the symlinks for the Makefiles. Giving it any
+# (in this case, 1) tells it to make symlinks.
+	sh sys/unix/setup.sh 1
+
+$(TARGET_NAMES): %: %-stamp
+
+$(TARGET_STAMPS): Makefile patch-stamp
+	dh_testdir
+	dh_installdirs
+
+	touch include/config.h
+	$(MAKE) nethack WIN=$(patsubst build-%-stamp,%,$@)
+	cp src/nethack debian/$(patsubst build-%-stamp,%,$@)
+	touch $@
+
+build-common: patch-stamp build-common-stamp
+
+build-common-stamp: Makefile $(TARGET_NAMES)
+	$(MAKE) CFLAGS="$(CFLAGS) -DUSE_XPM" \
+	  Guidebook data oracles options quest.dat rumors dungeon spec_levs \
+	  check-dlb x11tiles pet_mark.xbm rip.xpm mapbg.xpm
+	cd util && $(MAKE) recover
+	touch build-common-stamp
+
+clean: unpatch
+	dh_testdir
+	dh_testroot
+	rm -f build-stamp build-common-stamp $(TARGET_STAMPS)
+	rm -f nh10.pcf*
+	rm -f $(patsubst %,debian/%/nethack,$(TARGETS))
+	-$(MAKE) spotless
+	-find . -name Makefile -print0 | xargs -r -0 rm
+
+	dh_clean
+
+install: build
+	dh_testdir
+	dh_testroot
+	dh_prep
+	dh_installdirs
+	dh_installinit --no-start -pnethack-common -- 'start 18 2 3 4 5 .'
+	dh_link
+
+	chgrp games debian/nethack-common/usr/lib/games/nethack
+	chgrp -R games debian/nethack-common/var/games/nethack
+	chmod -R 2775 debian/nethack-common/var/games/nethack
+
+	install -m 0755 -o root -g root debian/recover-helper \
+	  debian/nethack-common/usr/lib/games/nethack/recover-helper
+
+	install -m 0644 -o root -g root dat/nhdat \
+	  debian/nethack-common/usr/lib/games/nethack/nhdat
+	install -m 0644 -o root -g root dat/hh \
+	  debian/nethack-common/usr/lib/games/nethack/hh
+
+	install -m 0644 -o root -g root debian/nethackrc.tty \
+	  debian/nethack-common/etc/nethack/nethackrc.tty
+
+	install -m 0644 -o root -g root debian/nethack.xpm \
+	  debian/nethack-common/usr/share/pixmaps
+
+	install -m 644 debian/x11/NetHack.ad \
+	  debian/nethack-x11/etc/X11/app-defaults/NetHack
+
+	/usr/bin/X11/bdftopcf -o nh10.pcf win/X11/nh10.bdf
+	gzip -9f nh10.pcf
+	install -m 644 nh10.pcf.gz debian/nethack-x11/usr/share/fonts/X11/misc
+	# all graphics data needed by the graphical front ends
+	for file in x11tiles pet_mark.xbm rip.xpm mapbg.xpm; do \
+	  install -m 0644 -o root -g root dat/$$file \
+	    debian/nethack-common/usr/share/pixmaps/nethack/; \
+	done
+
+	# install all utilities
+	for prg in dgn_comp lev_comp dlb; do \
+	  install -m 0755 -o root -g root util/$$prg \
+	    debian/nethack-common/usr/lib/games/nethack/$$prg; \
+	done
+
+   # may become setgid games
+	install -m 0755 -o root -g games util/recover \
+	  debian/nethack-common/usr/lib/games/nethack/recover; \
+
+	# all shell scripts, nethack binaries, overrides, and nethackrcs
+	for flavor in $(TARGETS); do \
+	  install -m 0755 -o root -g root debian/$$flavor/nethack.sh \
+	    debian/nethack-$$flavor/usr/lib/games/nethack/nethack-$$flavor.sh; \
+	  if [ -f "debian/$$flavor/nethack-tty.sh" ]; then \
+	    install -m 0755 -o root -g root debian/$$flavor/nethack-tty.sh \
+	      debian/nethack-$$flavor/usr/lib/games/nethack/nethack-$$flavor-tty.sh; \
+	  fi; \
+	  install -m 0644 -o root -g root debian/$$flavor/nethackrc \
+	    debian/nethack-$$flavor/etc/nethack/nethackrc.$$flavor; \
+	  install -m 2755 -o root -g games debian/$$flavor/nethack \
+	    debian/nethack-$$flavor/usr/lib/games/nethack/nethack-$$flavor; \
+	done
+
+	for pkg in $(addprefix nethack-,$(TARGETS) common); do \
+	  if [ -f "debian/overrides/lintian/$$pkg" ]; then \
+	    mkdir -p debian/$$pkg/usr/share/lintian/overrides; \
+	    cp debian/overrides/lintian/$$pkg debian/$$pkg/usr/share/lintian/overrides; \
+	  fi; \
+	done
+
+# spoilers have been split out into nethack-spoilers
+
+binary-indep:
+# Ye olde no-op.
+
+binary-arch: build install
+	dh_testdir
+	dh_testroot
+	dh_installdocs -a -A debian/README.Debian README.menucolor
+	dh_installdocs -pnethack-common debian/README.patches
+	dh_install
+	dh_installmenu -a
+	dh_installdebconf -pnethack-common
+	dh_installexamples -pnethack-x11 debian/x11/NetHack.ad
+	dh_installman -a
+	dh_installchangelogs -a
+	dh_installxfonts -a
+	dh_strip -a
+	dh_compress -a
+	dh_fixperms -a -Xnethack
+	dh_installdeb -a
+	dh_shlibdeps -a
+	dh_gencontrol -a
+	dh_md5sums -a
+	dh_builddeb -a
+
+source diff:
+	@echo >&2 'source and diff are obsolete - use dpkg-source -b'; false
+
+binary: binary-indep binary-arch
+
+.PHONY: build build-common clean binary-indep binary-arch binary source diff install patch unpatch $(TARGET_NAMES)

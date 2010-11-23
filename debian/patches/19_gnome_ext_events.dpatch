@@ -1,0 +1,79 @@
+#! /bin/sh -e
+## 19_gnome_ext_events.dpatch by  <joshk@triplehelix.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Extended menu didn't handle enough events. Handle stuff like mouse click
+
+if [ $# -lt 1 ]; then
+    echo "`basename $0`: script expects -patch|-unpatch as argument" >&2
+    exit 1
+fi
+
+[ -f debian/patches/00patch-opts ] && . debian/patches/00patch-opts
+patch_opts="${patch_opts:--f --no-backup-if-mismatch} ${2:+-d $2}"
+
+case "$1" in
+    -patch) patch -p1 ${patch_opts} < $0;;
+    -unpatch) patch -R -p1 ${patch_opts} < $0;;
+    *)
+        echo "`basename $0`: script expects -patch|-unpatch as argument" >&2
+        exit 1;;
+esac
+
+exit 0
+
+--- orig/nethack-3.4.3/win/gnome/gnmenu.c	2003-12-24 21:41:57.000000000 -0800
++++ nethack-3.4.3/win/gnome/gnmenu.c	2004-04-28 22:28:13.000000000 -0700
+@@ -30,9 +30,9 @@
+ 	guint32 lastTime;
+ } extMenu;
+ 
++static extMenu info = { 0 };
+ static GdkColor color_blue = { 0, 0, 0, 0xffff };
+ 
+-
+ static void
+ ghack_menu_window_key(GtkWidget *menuWin, GdkEventKey *event, gpointer data)
+ {
+@@ -83,10 +83,9 @@
+ static void
+ ghack_menu_row_selected (GtkCList *clist, int row, int col, GdkEvent *event)
+ {
+-    /* FIXME: Do something */
++  info.curItem = row;
+ }
+ 
+-
+ void
+ ghack_menu_window_clear(GtkWidget *menuWin, gpointer data)
+ {
+@@ -640,6 +639,17 @@
+     int i;
+     char c = event->string[0];
+ 
++    switch (event->keyval)
++    {
++      case GDK_Up:
++	--info->curItem;
++	return;
++
++      case GDK_Down:
++	++info->curItem;
++	return;
++    }
++    
+     clist = GTK_WIDGET(gtk_object_get_data(GTK_OBJECT(menuWin), "clist"));
+     g_assert(clist != NULL);
+ 
+@@ -697,7 +707,10 @@
+     GtkWidget* swin;
+     GtkWidget* frame1;
+     GtkWidget* clist;
+-    extMenu info;
++
++    /* Reset, because it's now a static var */
++    info.charIdx = 0;
++    info.lastTime = 0;
+ 
+     dialog = gnome_dialog_new("Extended Commands",
+ 			      GNOME_STOCK_BUTTON_OK,
